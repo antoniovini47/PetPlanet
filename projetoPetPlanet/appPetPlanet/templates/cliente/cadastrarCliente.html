@@ -1,6 +1,6 @@
-{% extends 'cliente/paginaBase.html' %}
+{% extends 'cliente/navBar.html' %}
 {% block conteudo %}
-<form action="{% url 'listarClientes' %}" method="post">
+<form action="{% url 'salvarNovoClienteNoBD' %}" method="post">
   {% csrf_token %}
     <div class="container">
         <h1>Cadastar Cliente</h1>
