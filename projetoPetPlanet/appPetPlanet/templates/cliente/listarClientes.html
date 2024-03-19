@@ -1,7 +1,7 @@
 {% extends 'cliente/navBar.html' %}
 {% block conteudo %}
 <div class="container">
-  <h1>Listagem de Clientes</h1>
+    <h1>Listagem de Clientes</h1>
     <table class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
@@ -10,6 +10,7 @@
             <th>Telefone</th>
             <th>E-mail</th>
             <th>Endereço</th>
+            <th>Editar</th>
         </tr>
         {% for cliente in clientes %}
         <tr>
@@ -19,6 +20,7 @@
             <td>{{cliente.telefone}}</td>
             <td>{{cliente.email}}</td>
             <td>{{cliente.endereco}}</td>
+            <td><a href="{% url 'infoCliente' %}{{cliente.id_cliente}}">Editar</a></td>
         </tr>
         {% endfor %}
     </table>
