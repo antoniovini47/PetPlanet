@@ -33,7 +33,6 @@ urlpatterns = [
     path('salvarNovoClienteNoBD/', views.salvarNovoClienteNoBD,
          name='salvarNovoClienteNoBD'),
 
-
     path('excluirClienteDoBD/',
          views.excluirClienteDoBD, name='excluirClienteDoBD'),
     path('excluirClienteDoBD/<int:IDCliente>/',
