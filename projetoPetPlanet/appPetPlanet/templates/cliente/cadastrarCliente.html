@@ -2,14 +2,17 @@
 {% block conteudo %}
 <form action="{% url 'salvarNovoClienteNoBD' %}" method="post">
   {% csrf_token %}
-    <div class="container">
-        <h1>Cadastar Cliente</h1>
-        Nome <input name="nome" type="text"><br>
-        E-mail <input name="email" type="email"><br>
-        CPF <input name="cpf" type="text"><br>
-        Telefone <input name="telefone" type="text"><br>
-        Endereço <input name="endereco" type="text"><br>
-        <button>Cadastrar</button>
-    </div>
+  <div class="container">
+    <h1>Cadastar Cliente</h1>
+    Nome <input name="nome" type="text" value="{{ nomeCliente }}"><br>
+    E-mail <input name="email" type="email" value="{{ emailCliente }}"><br>
+    CPF <input name="cpf" type="text" value="{{ cpfCliente }}"><br>
+    Telefone <input name="telefone" type="text" value="{{ telefoneCliente }}"><br>
+    Endereço <input name="endereco" type="text" value="{{ enderecoCompletoCliente }}"><br>
+    <button>Cadastrar</button>
+  </div>
+</form>
+<form action=" {% url 'preencherDadosCliente' %}">
+  <button>Preencher automaticamente</button>
 </form>
 {% endblock %}

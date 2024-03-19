@@ -1,8 +1,12 @@
+{% extends 'cliente/navBar.html' %}
+{% block conteudo %}
 <div class="container">
-    ID: {{cliente[0].id_cliente}}<br>
-    Nome: {{cliente[0].nome}}<br>
-    CPF: {{cliente[0].cpf}}<br>
-    Telefone: {{cliente[0].telefone}}<br>
-    E-mail: {{cliente[0].email}}<br>
-    Endereço: {{cliente[0].endereco}}<br>
+    ID: {{ cliente.id_cliente }}<br>
+    Nome: {{ cliente.nome }}<br>
+    CPF: {{ cliente.cpf }}<br>
+    Telefone: {{ cliente.telefone }}<br>
+    E-mail: {{ cliente.email }}<br>
+    Endereço: {{ cliente.endereco }}<br>
+    <a href="{% url 'excluirClienteDoBD' %}{{ cliente.id_cliente }}">Excluir</a>
 </div>
+{% endblock %}
