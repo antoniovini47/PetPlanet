@@ -9,4 +9,5 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Preenchimento automatico ao cadastrar novo cliente, usando API desenvolvida por Antônio Oliveira (https://github.com/antoniovini47/API-4Devs-GeradorDePessoa)
  - Página para a visualização de dados individuais do cliente
  - Funções para Editar e excluir Cliente
+ - Gerador de nome de pet adicionado
  - Outras melhorias diversas.
