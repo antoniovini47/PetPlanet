@@ -16,11 +16,14 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
+from django.contrib import admin
 from appPetPlanet import views
 
 urlpatterns = [
     # rota, view responsável, nome de referencia
     path('', views.home, name='home'),
+
+    path('admin/', admin.site.urls),
 
     path('cadastrarCliente/', views.cadastrarCliente,
          name='cadastrarCliente'),
