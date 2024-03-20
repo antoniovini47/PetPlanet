@@ -1,0 +1,20 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<form action="{% url 'salvarNovoPetNoDB' %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h1>Cadastar Pet</h1>
+        Nome <input name="nome" type="text" value="{{ nomePet }}"><br>
+        Espécie <input name="especie" type="text" value="{{ especiePet }}"><br>
+        Raça <input name="raca" type="text" value="{{ racaPet }}"><br>
+        Idade <input name="idade" type="text" value="{{ idadePet }}"><br>
+        Sexo <input name="sexo" type="text" value="{{ sexoPet }}"><br>
+        Porte <input name="porte" type="text" value="{{ portePet }}"><br>
+        Alergias <input name="alergias" type="text" value="{{ alergiasPet }}"><br>
+        <button>Cadastrar</button>
+    </div>
+</form>
+<form action=" {% url 'preencherDadosPet' %}">
+    <button>Gerar Nome do pet</button>
+</form>
+{% endblock %}

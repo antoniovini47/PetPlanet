@@ -1,4 +1,4 @@
-{% extends 'cliente/navBar.html' %}
+{% extends 'navBar.html' %}
 {% block conteudo %}
 <form action="{% url 'salvarNovoClienteNoBD' %}" method="post">
   {% csrf_token %}

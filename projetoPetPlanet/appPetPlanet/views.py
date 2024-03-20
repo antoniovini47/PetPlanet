@@ -1,12 +1,26 @@
 from django.shortcuts import render
 from .models import Cliente
+from .models import Pet
 from .gerarNomePet import gerarNomePet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 
 
+# Função temporária, para debug
+def limparBD(request):
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute(
+        'DELETE from appPetPlanet_cliente WHERE id_cliente>1')
+    bd.commit()
+    bd.close()
+    return render(request, 'home.html')
+
+
 def home(request):
     return render(request, 'home.html')
+
+# FUNÇÕES CLIENTE
 
 
 def cadastrarCliente(request):
@@ -16,16 +30,6 @@ def cadastrarCliente(request):
 def preencherDadosCliente(request):
     args = gerarDadosCliente()
     return render(request, 'cliente/cadastrarCliente.html', args)
-
-
-def limparBD(request):
-    bd = sqlite3.connect('db.sqlite3')
-    cursor = bd.cursor()
-    cursor.execute(
-        'DELETE from appPetPlanet_cliente WHERE id_cliente>1')
-    bd.commit()
-    bd.close()
-    return render(request, 'home.html')
 
 
 def salvarNovoClienteNoBD(request):
@@ -62,6 +66,50 @@ def listarClientes(request):
 def infoCliente(request, IDCliente):
     cliente = Cliente.objects.get(id_cliente=IDCliente)
     return render(request, 'cliente/infoCliente.html', {'cliente': cliente})
+
+# FUNÇÕES DO PET
+
+
+def cadastrarPet(request):
+    return render(request, 'pet/cadastrarPet.html')
+
+
+def salvarNovoPetNoBD(request):
+    pet = Pet()
+    pet.nome = request.POST.get('nome')
+    pet.especie = request.POST.get('especie')
+    pet.raca = request.POST.get('raca')
+    pet.idade = request.POST.get('idade')
+    pet.sexo = request.POST.get('sexo')
+    pet.porte = request.POST.get('porte')
+    pet.alergias = request.POST.get('alergias')
+    pet.save()
+    return render(request, 'pet/cadastrarPet.html')
+
+
+def listarPets(request):
+    pets = {
+        'pets': Pet.objects.all()
+    }
+    return render(request, 'pet/listarPets.html', pets)
+
+
+def infoPet(request, IDPet):
+    pet = Pet.objects.get(id_pet=IDPet)
+    return render(request, 'pet/infoPet.html', {'pet': pet})
+
+
+def excluirPetDB(request, IDPet):
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute(
+        'DELETE from appPetPlanet_pet WHERE id_pet='+str(IDPet))
+    bd.commit()
+    bd.close()
+    pets = {
+        'pets': Pet.objects.all()
+    }
+    return render(request, 'pet/listarPets.html', pets)
 
 
 def preencherDadosPet(request):

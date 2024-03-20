@@ -1,0 +1,32 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<div class="container">
+    <h1>Listagem de Pets</h1>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Espécie</th>
+            <th>Raça</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+            <th>Porte</th>
+            <th>Alergias</th>
+            <th>Editar</th>
+        </tr>
+        {% for pet in pets %}
+        <tr>
+            <td>{{pet.id_pet}}</td>
+            <td>{{pet.nome}}</td>
+            <td>{{pet.especie}}</td>
+            <td>{{pet.raca}}</td>
+            <td>{{pet.idade}}</td>
+            <td>{{pet.sexo}}</td>
+            <td>{{pet.porte}}</td>
+            <td>{{pet.alergias}}</td>
+            <td><a href="{% url 'infoPet' %}{{pet.id_pet}}">Editar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

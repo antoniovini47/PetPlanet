@@ -1,0 +1,14 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<div class="container">
+    ID: {{pet.id_pet}}<br>
+    Nome: {{pet.nome}}<br>
+    Especie: {{pet.especie}}<br>
+    Raça: {{pet.raca}}<br>
+    Idade: {{pet.idade}}<br>
+    Sexo: {{pet.sexo}}<br>
+    Porte: {{pet.porte}}<br>
+    Alergias: {{pet.alergias}}<br>
+    <a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a>
+</div>
+{% endblock %}

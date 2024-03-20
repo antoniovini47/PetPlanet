@@ -20,31 +20,37 @@ from django.contrib import admin
 from appPetPlanet import views
 
 urlpatterns = [
-    # rota, view responsável, nome de referencia
-    path('', views.home, name='home'),
+    # url temporaria, para debug
+    path('limparBD/', views.limparBD, name='limparBD'),
 
+    # urls essenciais
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
 
+    # urls cliente
     path('cadastrarCliente/', views.cadastrarCliente,
          name='cadastrarCliente'),
-
-    path('cadastrarCliente/pdc', views.preencherDadosCliente,
+    path('cadastrarCliente/pd/', views.preencherDadosCliente,
          name='preencherDadosCliente'),
-
     path('listarClientes/', views.listarClientes, name='listarClientes'),
-
     path('salvarNovoClienteNoBD/', views.salvarNovoClienteNoBD,
          name='salvarNovoClienteNoBD'),
-
     path('excluirClienteDoBD/',
          views.excluirClienteDoBD, name='excluirClienteDoBD'),
     path('excluirClienteDoBD/<int:IDCliente>/',
          views.excluirClienteDoBD, name='excluirClienteDoBD'),
-
-    path('limparBD/', views.limparBD, name='limparBD'),
-
-
     path('infoCliente/', views.infoCliente, name='infoCliente'),
     path('infoCliente/<int:IDCliente>/',
          views.infoCliente, name='infoCliente'),
+
+
+    # urls pet
+    path('cadastrarPet/', views.cadastrarPet, name='cadastrarPet'),
+    path('cadastrarPet/pd/', views.cadastrarPet, name='preencherDadosPet'),
+    path('listarPets/', views.listarPets, name='listarPets'),
+    path('salvarNovoPetNoDB/', views.salvarNovoPetNoBD, name='salvarNovoPetNoDB'),
+    path('infoPet/', views.infoPet, name='infoPet'),
+    path('infoPet/<int:IDPet>/', views.infoPet, name='infoPet'),
+    path('excluirPetDB/', views.excluirPetDB, name='excluirPetDB'),
+    path('excluirPetDB/<int:IDPet>/', views.excluirPetDB, name='excluirPetDB'),
 ]
