@@ -1,12 +1,16 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-<div class="container">
-    ID: {{ cliente.id_cliente }}<br>
-    Nome: {{ cliente.nome }}<br>
-    CPF: {{ cliente.cpf }}<br>
-    Telefone: {{ cliente.telefone }}<br>
-    E-mail: {{ cliente.email }}<br>
-    Endereço: {{ cliente.endereco }}<br>
-    <a href="{% url 'excluirClienteDoBD' %}{{ cliente.id_cliente }}">Excluir</a>
-</div>
+<form action="{% url 'editarClienteNoDB' %}{{cliente.id_cliente}}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        ID: {{ cliente.id_cliente }}<br>
+        Nome: <input name="nome" type="text" value="{{ cliente.nome }}"><br>
+        CPF: <input name="cpf" type="text" value="{{ cliente.cpf }}"><br>
+        Telefone: <input name="telefone" type="text" value="{{ cliente.telefone }}"><br>
+        E-mail: <input name="email" type="email" value="{{ cliente.email }}"><br>
+        Endereço: <input name="endereco" type="text" value="{{ cliente.endereco }}"><br>
+    </div>
+    <button>Salvar</button>
+</form>
+<a href="{% url 'excluirClienteDoBD' %}{{ cliente.id_cliente }}">Excluir</a>
 {% endblock %}

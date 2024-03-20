@@ -1,7 +1,7 @@
 import random
 
 nomesPet = ["Bolinha", "Rex", "Mel", "Thor", "Luna", "Bob", "Lola", "Billy", "Cleitin",
-            "Marley", "Cleberson", "Spike", "Chiquinha", "Espuleta", "Snoopy", "Renato", "Max", "Coco", "Bela", "Chalize"]
+            "Marley", "Cleberson", "Spike", "Chiquinha", "Espuleta", "Snoopy", "Renato", "Max", "Coco", "Bela", "Charlize"]
 adjetivosPet = ["Fofinho", "Bagunceiro", "Peludo", "Ronronante", "Lambão", "Saltitante", "Preguiçoso", "Sapeca", "Felpudo",
                 "Pirata", "Guloso", "Esperto", "Pipoca", "Esparramado", "Fujão", "Rabugento", "Pirado", "Pintado", "Peludão", "Dengoso"]
 

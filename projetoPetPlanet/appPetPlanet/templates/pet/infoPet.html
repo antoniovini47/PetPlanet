@@ -1,14 +1,18 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-<div class="container">
-    ID: {{pet.id_pet}}<br>
-    Nome: {{pet.nome}}<br>
-    Especie: {{pet.especie}}<br>
-    Raça: {{pet.raca}}<br>
-    Idade: {{pet.idade}}<br>
-    Sexo: {{pet.sexo}}<br>
-    Porte: {{pet.porte}}<br>
-    Alergias: {{pet.alergias}}<br>
-    <a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a>
-</div>
+<form action="{% url 'editarPetNoDB' %}{{pet.id_pet}}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        ID: {{ pet.id_pet }}<br>
+        Nome: <input name="nome" type="text" value="{{ pet.nome }}"><br>
+        Espécie: <input name="especie" type="text" value="{{ pet.especie }}"><br>
+        Raça: <input name="raca" type="text" value="{{ pet.raca }}"><br>
+        Idade: <input name="idade" type="text" value="{{ pet.idade }}"><br>
+        Sexo: <input name="sexo" type="text" value="{{ pet.sexo }}"><br>
+        Porte: <input name="porte" type="text" value="{{ pet.porte }}"><br>
+        Alergias: <input name="alergias" type="text" value="{{ pet.alergias }}"><br>
+    </div>
+    <button>Salvar</button>
+</form>
+<a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a>
 {% endblock %}
