@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Cliente
 from .models import Pet
-from .gerarNomePet import gerarNomePet
+from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 
@@ -113,5 +113,5 @@ def excluirPetDB(request, IDPet):
 
 
 def preencherDadosPet(request):
-    nomePet = gerarNomePet()
-    return render(request, 'pet/cadastrarPet.html', nomePet)
+    args = gerarDadosPet()
+    return render(request, 'pet/cadastrarPet.html', args)

@@ -46,7 +46,7 @@ urlpatterns = [
 
     # urls pet
     path('cadastrarPet/', views.cadastrarPet, name='cadastrarPet'),
-    path('cadastrarPet/pd/', views.cadastrarPet, name='preencherDadosPet'),
+    path('cadastrarPet/pd/', views.preencherDadosPet, name='preencherDadosPet'),
     path('listarPets/', views.listarPets, name='listarPets'),
     path('salvarNovoPetNoDB/', views.salvarNovoPetNoBD, name='salvarNovoPetNoDB'),
     path('infoPet/', views.infoPet, name='infoPet'),
