@@ -13,9 +13,10 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Outras melhorias diversas.
 
 **20/03/2024** - Implementação de novos recursos tais como:
- - Implementação do sistema completo de cadastro, edição e exclusão de Pet.
+ - Implementação do sistema completo de cadastro, consulta, edição e exclusão de Pet.
  - Outras melhorias diversas.
 
 **21/03/2024** - Implementação de novos recursos tais como:
+ - Implementação do sistema completo de cadastro, consulta, edição e exclusão de Funcionários.
  - Melhorias no banco de dados.
  - Outras melhorias diversas.
