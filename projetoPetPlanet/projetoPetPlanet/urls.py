@@ -60,4 +60,26 @@ urlpatterns = [
     path('infoPet/<int:IDPet>/', views.infoPet, name='infoPet'),
     path('excluirPetDB/', views.excluirPetDB, name='excluirPetDB'),
     path('excluirPetDB/<int:IDPet>/', views.excluirPetDB, name='excluirPetDB'),
+
+
+    # urls funcionario
+    path('cadastrarFuncionario/', views.cadastrarFuncionario,
+         name='cadastrarFuncionario'),
+    path('cadastrarFuncionario/pd/', views.preencherDadosFuncionario,
+         name='preencherDadosFuncionario'),
+    path('listarFuncionarios/', views.listarFuncionarios,
+         name='listarFuncionarios'),
+    path('salvarNovoFuncionarioNoDB/', views.salvarNovoFuncionarioNoDB,
+         name='salvarNovoFuncionarioNoDB'),
+    path('editarFuncionarioNoDB/', views.editarFuncionarioNoDB,
+         name='editarFuncionarioNoDB'),
+    path('editarFuncionarioNoDB/<int:IDFuncionario>',
+         views.editarFuncionarioNoDB, name='editarFuncionarioNoDB'),
+    path('infoFuncionario/', views.infoFuncionario, name='infoFuncionario'),
+    path('infoFuncionario/<int:IDFuncionario>/',
+         views.infoFuncionario, name='infoFuncionario'),
+    path('excluirFuncionarioDoDB/', views.excluirFuncionarioDoDB,
+         name='excluirFuncionarioDoDB'),
+    path('excluirFuncionarioDoDB/<int:IDFuncionario>/',
+         views.excluirFuncionarioDoDB, name='excluirFuncionarioDoDB'),
 ]

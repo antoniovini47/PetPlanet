@@ -1,0 +1,32 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<div class="container">
+    <h1>Listagem de Funcionarios</h1>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Endereço</th>
+            <th>Cargo</th>
+            <th>Salário</th>
+            <th>Editar</th>
+        </tr>
+        {% for funcionario in funcionarios %}
+        <tr>
+            <td>{{funcionario.id_cliente}}</td>
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.cpf}}</td>
+            <td>{{funcionario.telefone}}</td>
+            <td>{{funcionario.email}}</td>
+            <td>{{funcionario.endereco}}</td>
+            <td>{{funcionario.cargo}}</td>
+            <td>{{funcionario.salario}}</td>
+            <td><a href="{% url 'infoFuncionario' %}{{funcionario.id_funcionario}}">Editar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

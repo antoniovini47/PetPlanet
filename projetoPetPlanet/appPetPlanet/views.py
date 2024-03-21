@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import Cliente
 from .models import Pet
+from .models import Funcionario
 from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
+import random
 
 
 # Função temporária, para debug
@@ -94,7 +96,12 @@ def listarClientes(request):
 
 def infoCliente(request, IDCliente):
     cliente = Cliente.objects.get(id_cliente=IDCliente)
-    return render(request, 'cliente/infoCliente.html', {'cliente': cliente})
+    pets = Pet.objects.filter(id_dono=IDCliente)
+    args = {
+        'cliente': cliente,
+        'pets': pets,
+    }
+    return render(request, 'cliente/infoCliente.html', args)
 
 # FUNÇÕES DO PET
 
@@ -116,7 +123,6 @@ def salvarNovoPetNoBD(request):
     pet.porte = request.POST.get('porte')
     pet.alergias = request.POST.get('alergias')
     pet.id_dono = request.POST.get('dono')
-    # pet.id_dono = int(str(pet.id_dono[1])+str(pet.id_dono[2]))
     pet.save()
     return render(request, 'pet/cadastrarPet.html')
 
@@ -130,9 +136,14 @@ def listarPets(request):
 
 def infoPet(request, IDPet):
     pet = Pet.objects.get(id_pet=IDPet)
+    try:
+        dono = Cliente.objects.get(id_cliente=pet.id_dono)
+    except Cliente.DoesNotExist:
+        dono = Cliente()
+        dono.nome = "Sem dono definido"
     args = {
         'pet': pet,
-        'dono': Cliente.objects.get(id_cliente=pet.id_dono),
+        'dono': dono,
         'clientes': Cliente.objects.all(),
     }
     return render(request, 'pet/infoPet.html', args)
@@ -194,3 +205,92 @@ def preencherDadosPet(request):
     args = gerarDadosPet()
     args.update({'clientes': Cliente.objects.all()})
     return render(request, 'pet/cadastrarPet.html', args)
+
+# FUNÇÕES DO FUNCIONÁRIO
+
+
+def cadastrarFuncionario(request):
+    return render(request, 'funcionario/cadastrarFuncionario.html')
+
+
+def salvarNovoFuncionarioNoDB(request):
+    funcionario = Funcionario()
+    funcionario.nome = request.POST.get('nome')
+    funcionario.cpf = request.POST.get('cpf')
+    funcionario.email = request.POST.get('email')
+    funcionario.telefone = request.POST.get('telefone')
+    funcionario.endereco = request.POST.get('endereco')
+    funcionario.salario = request.POST.get('salario')
+    funcionario.cargo = request.POST.get('cargo')
+    funcionario.save()
+    return render(request, 'funcionario/cadastrarFuncionario.html')
+
+
+def listarFuncionarios(request):
+    funcionarios = {
+        'funcionarios': Funcionario.objects.all()
+    }
+    return render(request, 'funcionario/listarFuncionarios.html', funcionarios)
+
+
+def preencherDadosFuncionario(request):
+    args = gerarDadosCliente()
+    args.update({'cargo': random.choice(["Groomer", "Atendente de Loja", "Veterinário", "Banho e Tosa", "Recepcionista",
+                "Esteticista Animal", "Auxiliar de Veterinária", "Faz o cafézinho", "Auxiliar de Banho e Tosa"])})
+    args.update({'salario': random.randint(1412, 3000)})
+    return render(request, 'funcionario/cadastrarFuncionario.html', args)
+
+
+def infoFuncionario(request, IDFuncionario):
+    args = {
+        'funcionario': Funcionario.objects.get(id_funcionario=IDFuncionario),
+    }
+    return render(request, 'funcionario/infoFuncionario.html', args)
+
+
+def excluirFuncionarioDoDB(request, IDFuncionario):
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute(
+        'DELETE from appPetPlanet_funcionario WHERE id_funcionario='+str(IDFuncionario))
+    bd.commit()
+    bd.close()
+    funcionarios = {
+        'funcuionarios': Funcionario.objects.all()
+    }
+    return render(request, 'funcionario/listarFuncionarios.html', funcionarios)
+
+
+def editarFuncionarioNoDB(request, IDFuncionario):
+    funcionario = Funcionario()
+    funcionario.nome = request.POST.get('nome')
+    funcionario.cpf = request.POST.get('cpf')
+    funcionario.email = request.POST.get('email')
+    funcionario.telefone = request.POST.get('telefone')
+    funcionario.endereco = request.POST.get('endereco')
+    funcionario.salario = request.POST.get('salario')
+    funcionario.cargo = request.POST.get('cargo')
+
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute("UPDATE appPetPlanet_funcionario SET nome='" +
+                   str(funcionario.nome) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET cpf='" +
+                   str(funcionario.cpf) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET email='" +
+                   str(funcionario.email) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET telefone='" +
+                   str(funcionario.telefone) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET endereco='" +
+                   str(funcionario.endereco) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET salario='" +
+                   str(funcionario.salario) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    cursor.execute("UPDATE appPetPlanet_funcionario SET cargo='" +
+                   str(funcionario.cargo) + "' WHERE id_funcionario=" + str(IDFuncionario))
+    bd.commit()
+    bd.close()
+
+    funcionarios = {
+        'funcionarios': Funcionario.objects.all()
+    }
+    return render(request, 'funcionario/listarFuncionarios.html', funcionarios)

@@ -1,0 +1,19 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<form action="{% url 'editarFuncionarioNoDB' %}{{funcionario.id_funcionario}}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        ID: {{ funcionario.id_funcionario }}<br>
+        Nome: <input name="nome" type="text" value="{{ funcionario.nome }}"><br>
+        CPF: <input name="cpf" type="text" value="{{ funcionario.cpf }}"><br>
+        Telefone: <input name="telefone" type="text" value="{{ funcionario.telefone }}"><br>
+        E-mail: <input name="email" type="email" value="{{ funcionario.email }}"><br>
+        Endereço: <input name="endereco" type="text" value="{{ funcionario.endereco }}"><br>
+        Cargo: <input name="cargo" type="text" value="{{ funcionario.cargo}}"><br>
+        Salário: <input name="salario" type="text" value="{{ funcionario.salario}}"><br>
+
+    </div>
+    <button>Salvar</button>
+</form>
+<a href="{% url 'excluirFuncionarioDoDB' %}{{ funcionario.id_funcionario }}">Excluir</a>
+{% endblock %}

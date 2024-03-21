@@ -9,6 +9,33 @@
         Telefone: <input name="telefone" type="text" value="{{ cliente.telefone }}"><br>
         E-mail: <input name="email" type="email" value="{{ cliente.email }}"><br>
         Endereço: <input name="endereco" type="text" value="{{ cliente.endereco }}"><br>
+        Pets:<br>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Espécie</th>
+                <th>Raça</th>
+                <th>Idade</th>
+                <th>Sexo</th>
+                <th>Porte</th>
+                <th>Alergias</th>
+                <th>Excluir</th>
+            </tr>
+            {% for pet in pets %}
+            <tr>
+                <td>{{pet.id_pet}}</td>
+                <td>{{pet.nome}}</td>
+                <td>{{pet.especie}}</td>
+                <td>{{pet.raca}}</td>
+                <td>{{pet.idade}}</td>
+                <td>{{pet.sexo}}</td>
+                <td>{{pet.porte}}</td>
+                <td>{{pet.alergias}}</td>
+                <td><a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
     <button>Salvar</button>
 </form>

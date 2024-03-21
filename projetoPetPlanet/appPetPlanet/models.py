@@ -20,3 +20,14 @@ class Pet(models.Model):
     porte = models.TextField()
     alergias = models.TextField()
     id_dono = models.IntegerField(default=1)
+
+
+class Funcionario(models.Model):
+    id_funcionario = models.AutoField(primary_key=True)
+    nome = models.TextField()
+    cpf = models.TextField()
+    email = models.TextField()
+    telefone = models.TextField()
+    endereco = models.TextField()
+    salario = models.FloatField()
+    cargo = models.TextField()
