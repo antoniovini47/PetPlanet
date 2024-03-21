@@ -12,6 +12,7 @@
             <th>Sexo</th>
             <th>Porte</th>
             <th>Alergias</th>
+            <th>ID Dono</th>
             <th>Editar</th>
         </tr>
         {% for pet in pets %}
@@ -24,6 +25,7 @@
             <td>{{pet.sexo}}</td>
             <td>{{pet.porte}}</td>
             <td>{{pet.alergias}}</td>
+            <td>{{pet.id_dono}}</td>
             <td><a href="{% url 'infoPet' %}{{pet.id_pet}}">Editar</a></td>
         </tr>
         {% endfor %}

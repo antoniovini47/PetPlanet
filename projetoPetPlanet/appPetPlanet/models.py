@@ -19,3 +19,4 @@ class Pet(models.Model):
     sexo = models.TextField()
     porte = models.TextField()
     alergias = models.TextField()
+    id_dono = models.IntegerField(default=1)

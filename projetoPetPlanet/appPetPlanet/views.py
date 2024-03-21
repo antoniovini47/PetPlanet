@@ -100,7 +100,10 @@ def infoCliente(request, IDCliente):
 
 
 def cadastrarPet(request):
-    return render(request, 'pet/cadastrarPet.html')
+    clientes = {
+        'clientes': Cliente.objects.all()
+    }
+    return render(request, 'pet/cadastrarPet.html', clientes)
 
 
 def salvarNovoPetNoBD(request):
@@ -112,6 +115,8 @@ def salvarNovoPetNoBD(request):
     pet.sexo = request.POST.get('sexo')
     pet.porte = request.POST.get('porte')
     pet.alergias = request.POST.get('alergias')
+    pet.id_dono = request.POST.get('dono')
+    # pet.id_dono = int(str(pet.id_dono[1])+str(pet.id_dono[2]))
     pet.save()
     return render(request, 'pet/cadastrarPet.html')
 
@@ -125,7 +130,12 @@ def listarPets(request):
 
 def infoPet(request, IDPet):
     pet = Pet.objects.get(id_pet=IDPet)
-    return render(request, 'pet/infoPet.html', {'pet': pet})
+    args = {
+        'pet': pet,
+        'dono': Cliente.objects.get(id_cliente=pet.id_dono),
+        'clientes': Cliente.objects.all(),
+    }
+    return render(request, 'pet/infoPet.html', args)
 
 
 def excluirPetDB(request, IDPet):
@@ -150,6 +160,7 @@ def editarPetNoDB(request, IDPet):
     pet.sexo = request.POST.get('sexo')
     pet.porte = request.POST.get('porte')
     pet.alergias = request.POST.get('alergias')
+    pet.id_dono = request.POST.get('dono')
 
     bd = sqlite3.connect('db.sqlite3')
     cursor = bd.cursor()
@@ -167,6 +178,8 @@ def editarPetNoDB(request, IDPet):
                    str(pet.porte) + "' WHERE id_pet=" + str(IDPet))
     cursor.execute("UPDATE appPetPlanet_pet SET alergias='" +
                    str(pet.alergias) + "' WHERE id_pet=" + str(IDPet))
+    cursor.execute("UPDATE appPetPlanet_pet SET id_dono='" +
+                   str(pet.id_dono) + "' WHERE id_pet=" + str(IDPet))
 
     bd.commit()
     bd.close()
@@ -179,4 +192,5 @@ def editarPetNoDB(request, IDPet):
 
 def preencherDadosPet(request):
     args = gerarDadosPet()
+    args.update({'clientes': Cliente.objects.all()})
     return render(request, 'pet/cadastrarPet.html', args)

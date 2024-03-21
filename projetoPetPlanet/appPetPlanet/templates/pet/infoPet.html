@@ -3,6 +3,7 @@
 <form action="{% url 'editarPetNoDB' %}{{pet.id_pet}}" method="post">
     {% csrf_token %}
     <div class="container">
+        <H1>Dados do Pet</H1>
         ID: {{ pet.id_pet }}<br>
         Nome: <input name="nome" type="text" value="{{ pet.nome }}"><br>
         Espécie: <input name="especie" type="text" value="{{ pet.especie }}"><br>
@@ -11,6 +12,15 @@
         Sexo: <input name="sexo" type="text" value="{{ pet.sexo }}"><br>
         Porte: <input name="porte" type="text" value="{{ pet.porte }}"><br>
         Alergias: <input name="alergias" type="text" value="{{ pet.alergias }}"><br>
+        Dono <select name="dono" type="text" value="{{ donoPet }}">
+            <option nome="id_dono" type="input" value="{{ pet.id_dono }}">
+                {{ pet.id_dono }} - {{ dono.nome}}
+            </option>
+            {% for cliente in clientes %}
+            <option nome="id_dono" type="input" value="{{cliente.id_cliente}}">{{cliente.id_cliente}} - {{cliente.nome}}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     <button>Salvar</button>
 </form>
