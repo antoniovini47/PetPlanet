@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Cliente
 from .models import Pet
 from .models import Funcionario
+from .models import Produto
 from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
@@ -294,3 +295,76 @@ def editarFuncionarioNoDB(request, IDFuncionario):
         'funcionarios': Funcionario.objects.all()
     }
     return render(request, 'funcionario/listarFuncionarios.html', funcionarios)
+
+# FUNÇÕES DOS PRODUTOS
+
+
+def cadastrarProduto(request):
+    return render(request, 'produto/cadastrarProduto.html')
+
+
+def salvarNovoProdutoNoDB(request):
+    produto = Produto()
+    produto.nome = request.POST.get('nome')
+    produto.preco = request.POST.get('preco')
+    produto.estoque = request.POST.get('estoque')
+    produto.validade = request.POST.get('validade')
+    produto.categoria = request.POST.get('categoria')
+    produto.save()
+    return render(request, 'produto/cadastrarProduto.html')
+
+
+def listarProdutos(request):
+    produtos = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'produto/listarProdutos.html', produtos)
+
+
+def infoProduto(request, IDProduto):
+    args = {
+        'produto': Produto.objects.get(id_produto=IDProduto),
+    }
+    return render(request, 'produto/infoProduto.html', args)
+
+
+def excluirProdutoDoDB(request, IDProduto):
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute(
+        'DELETE from appPetPlanet_produto WHERE id_produto='+str(IDProduto))
+    bd.commit()
+    bd.close()
+    produtos = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'produto/listarProdutos.html', produtos)
+
+
+def editarProdutoNoDB(request, IDProduto):
+    produto = Produto()
+    produto.nome = request.POST.get('nome')
+    produto.preco = request.POST.get('preco')
+    produto.estoque = request.POST.get('estoque')
+    produto.validade = request.POST.get('validade')
+    produto.categoria = request.POST.get('categoria')
+
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute("UPDATE appPetPlanet_produto SET nome='" +
+                   str(produto.nome) + "' WHERE id_produto=" + str(IDProduto))
+    cursor.execute("UPDATE appPetPlanet_produto SET preco='" +
+                   str(produto.preco) + "' WHERE id_produto=" + str(IDProduto))
+    cursor.execute("UPDATE appPetPlanet_produto SET estoque='" +
+                   str(produto.estoque) + "' WHERE id_produto=" + str(IDProduto))
+    cursor.execute("UPDATE appPetPlanet_produto SET validade='" +
+                   str(produto.validade) + "' WHERE id_produto=" + str(IDProduto))
+    cursor.execute("UPDATE appPetPlanet_produto SET categoria='" +
+                   str(produto.categoria) + "' WHERE id_produto=" + str(IDProduto))
+    bd.commit()
+    bd.close()
+
+    produtos = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'produto/listarProdutos.html', produtos)

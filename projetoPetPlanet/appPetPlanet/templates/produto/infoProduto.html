@@ -1,0 +1,19 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<form action="{% url 'editarProdutoNoDB' %}{{produto.id_produto}}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        Nome <input name="nome" type="text" value="{{ produto.nome }}"><br>
+        Preço <input name="preco" type="text" value="{{ produto.preco }}"><br>
+        Estoque <input name="estoque" type="text" value="{{ produto.estoque }}"><br>
+        Validade <input name="validade" type="text" value="{{ produto.validade }}"><br>
+        Categoria <select name="categoria" type="text">
+            <option nome="categoria" type="input" value="{{ produto.categoria }}">{{ produto.categoria }}</option>
+            <option nome="categoria" type="input">Produto</option>
+            <option nome="categoria" type="input">Serviços</option>
+        </select><br>
+    </div>
+    <button>Salvar</button>
+</form>
+<a href="{% url 'excluirProdutoDoDB' %}{{ produto.id_produto }}">Excluir</a>
+{% endblock %}

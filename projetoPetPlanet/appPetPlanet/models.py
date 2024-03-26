@@ -31,3 +31,12 @@ class Funcionario(models.Model):
     endereco = models.TextField()
     salario = models.FloatField()
     cargo = models.TextField()
+
+
+class Produto(models.Model):
+    id_produto = models.AutoField(primary_key=True)
+    nome = models.TextField()
+    preco = models.FloatField()
+    estoque = models.IntegerField()
+    validade = models.TextField(default='12/12/2099')
+    categoria = models.TextField()

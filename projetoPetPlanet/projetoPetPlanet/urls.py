@@ -82,4 +82,23 @@ urlpatterns = [
          name='excluirFuncionarioDoDB'),
     path('excluirFuncionarioDoDB/<int:IDFuncionario>/',
          views.excluirFuncionarioDoDB, name='excluirFuncionarioDoDB'),
+
+    # urls produtos
+    path('cadastrarProduto/', views.cadastrarProduto,
+         name='cadastrarProduto'),
+    path('salvarNovoProdutoNoDB/', views.salvarNovoProdutoNoDB,
+         name='salvarNovoProdutoNoDB'),
+    path('listarProdutos/', views.listarProdutos,
+         name='listarProdutos'),
+    path('infoProduto/', views.infoProduto, name='infoProduto'),
+    path('infoProduto/<int:IDProduto>/',
+         views.infoProduto, name='infoProduto'),
+    path('excluirProdutoDoDB/', views.excluirProdutoDoDB,
+         name='excluirProdutoDoDB'),
+    path('excluirProdutoDoDB/<int:IDProduto>/',
+         views.excluirProdutoDoDB, name='excluirProdutoDoDB'),
+    path('editarProdutoNoDB/', views.editarProdutoNoDB,
+         name='editarProdutoNoDB'),
+    path('editarProdutoNoDB/<int:IDProduto>',
+         views.editarProdutoNoDB, name='editarProdutoNoDB'),
 ]

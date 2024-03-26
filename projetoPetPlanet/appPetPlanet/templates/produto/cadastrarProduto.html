@@ -1,0 +1,18 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<form action="{% url 'salvarNovoProdutoNoDB' %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h1>Cadastar Produto</h1>
+        Nome <input name="nome" type="text"><br>
+        Preço <input name="preco" type="text"><br>
+        Quantidade em estoque <input name="estoque" type="text"><br>
+        Data de validade <input name="validade" type="text"><br>
+        Categoria <select name="categoria" type="text">
+            <option nome="categoria" type="input">Produto</option>
+            <option nome="categoria" type="input">Serviços</option>
+        </select><br>
+        <button>Cadastrar</button>
+    </div>
+</form>
+{% endblock %}

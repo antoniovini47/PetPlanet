@@ -1,0 +1,28 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<div class="container">
+    <h1>Listagem de Produtos</h1>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Validade</th>
+            <th>Categoria</th>
+            <th>Editar</th>
+        </tr>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{produto.id_produto}}</td>
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>{{produto.estoque}}</td>
+            <td>{{produto.validade}}</td>
+            <td>{{produto.categoria}}</td>
+            <td><a href="{% url 'infoProduto' %}{{produto.id_produto}}">Editar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
