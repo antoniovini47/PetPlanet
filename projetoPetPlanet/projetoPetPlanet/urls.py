@@ -112,4 +112,7 @@ urlpatterns = [
          name='excluirServicoDoDB'),
     path('excluirServicoDoDB/<int:IDServico>', views.excluirServicoDoDB,
          name='excluirServicoDoDB'),
+
+    # urls vendas
+    path('novaVenda/', views.novaVenda, name='novaVenda')
 ]
