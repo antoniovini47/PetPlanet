@@ -30,4 +30,5 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Implementação do sistema completo para agendar e listar novos serviços.
  - Implementação do primeiro JavaScript do projeto em templates/gerarServico.html/filtrarPets()
  - Configuração dos primeiros arquivos para front-end em static/navBar.css
+ - Início da implementação do menu de venda.
  - Outras melhorias diversas.

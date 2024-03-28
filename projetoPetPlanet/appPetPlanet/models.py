@@ -50,3 +50,12 @@ class Servico(models.Model):
     servico_id = models.TextField(default=3)
     funcionario_id = models.IntegerField()
     observacoes = models.TextField()
+
+
+class Venda(models.Model):
+    id_venda = models.AutoField(primary_key=True)
+    cliente_id = models.IntegerField()
+    vendedor_id = models.IntegerField()
+    formaDePagamento = models.TextField()
+    itens = models.JSONField()
+    datahora = models.DateTimeField()

@@ -1,13 +1,45 @@
 {% extends 'navBar.html'%}
 {% block conteudo%}
 
-<!--form>
- //Fazer o PDV aqui
-</form-->
-
-<div class="container">
+<div>
     <h1>PDV - Nova Venda</h1>
-    <button onclick="teste('teste 2')">teste 2</button>
+    Produto
+    <select>
+        <option>Produtos aqui...</option>
+    </select><br>
+
+    Quantidade <input type="text" placeholder="Limitar a apenas numeros"></input><br>
+
+    Cliente
+    <select>
+        <option>Clientes aqui...Tendo como opção default um valor nulo</option>
+    </select><br>
+
+
+
+    <table name="listaDeItens">
+        <th>ID</th>
+        <th>Item</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Preço Total</th>
+        <th>Excluir</th>
+    </table>
+
+
+    Vendedor
+    <select>
+        <option>Funcionarios aqui...filtrados por categoria vendedor</option>
+    </select><br>
+
+    Forma de Pagamento
+    <select name="formaDePagamento">
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+        <option>PIX</option>
+    </select><br>
+
+    <button>Concluir Venda</button>
 </div>
 
 {% endblock %}
