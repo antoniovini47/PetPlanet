@@ -413,14 +413,36 @@ def salvarServicoGeradoNoDB(request):
 
 
 def listarAgenda(request):
+    clientes = Cliente.objects.all(),
+    funcionarios = Funcionario.objects.all(),
+    produtos = Produto.objects.all(),
+    pets = Pet.objects.all(),
+    agenda = Servico.objects.all(),
+    agendaOrganizada = Servico.objects.order_by('datahora').all()
+
     args = {
-        'clientes': Cliente.objects.all(),
-        'funcionarios': Funcionario.objects.all(),
-        'produtos': Produto.objects.all(),
-        'pets': Pet.objects.all(),
-        'agenda': Servico.objects.all(),
+        'clientes': clientes,
+        'funcionarios': funcionarios,
+        'produtos': produtos,
+        'pets': pets,
+        'agenda': agenda,
+        'agendaOrganizada': etiquetarAgenda(agendaOrganizada)
     }
     return render(request, 'servico/listarAgenda.html', args)
+
+
+def etiquetarAgenda(agenda):
+    agendaOrganizada = agenda
+    for servico in agendaOrganizada:
+        servico.cliente_id = Cliente.objects.get(
+            id_cliente=servico.cliente_id).nome
+        servico.funcionario_id = Funcionario.objects.get(
+            id_funcionario=servico.funcionario_id).nome
+        servico.servico_id = Produto.objects.get(
+            id_produto=servico.servico_id).nome
+        servico.pet_id = Pet.objects.get(
+            id_pet=servico.pet_id).nome
+    return agendaOrganizada
 
 
 def excluirServicoDoDB(request, IDServico):
@@ -438,5 +460,6 @@ def excluirServicoDoDB(request, IDServico):
         'produtos': Produto.objects.all(),
         'pets': Pet.objects.all(),
         'agenda': Servico.objects.all(),
+        'agendaOrganizada': etiquetarAgenda(Servico.objects.order_by('datahora').all())
     }
     return render(request, 'servico/listarAgenda.html', args)
