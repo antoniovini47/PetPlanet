@@ -20,9 +20,6 @@ from django.contrib import admin
 from appPetPlanet import views
 
 urlpatterns = [
-    # url temporaria, para debug
-    path('limparBD/', views.limparBD, name='limparBD'),
-
     # urls essenciais
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
@@ -101,4 +98,18 @@ urlpatterns = [
          name='editarProdutoNoDB'),
     path('editarProdutoNoDB/<int:IDProduto>',
          views.editarProdutoNoDB, name='editarProdutoNoDB'),
+
+    # urls serviços
+    path('gerarServico/', views.gerarServico, name='gerarServico'),
+    path('gerarServicoFiltrandoPet/',
+         views.gerarServicoFiltrandoPet, name='gerarServicoFiltrandoPet'),
+    path('gerarServicoFiltrandoPet/<int:IDDono>',
+         views.gerarServicoFiltrandoPet, name='gerarServicoFiltrandoPet'),
+    path('salvarServicoGeradoNoDB/', views.salvarServicoGeradoNoDB,
+         name='salvarServicoGeradoNoDB'),
+    path('listarAgenda/', views.listarAgenda, name='listarAgenda'),
+    path('excluirServicoDoDB/', views.excluirServicoDoDB,
+         name='excluirServicoDoDB'),
+    path('excluirServicoDoDB/<int:IDServico>', views.excluirServicoDoDB,
+         name='excluirServicoDoDB'),
 ]

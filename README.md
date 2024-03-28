@@ -25,3 +25,9 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Implementação do sistema completo de cadastro, consulta, edição e exclusão de Produtos.
  - Melhorias no banco de dados.
  - Outras melhorias diversas.
+
+**27/03/2024** - Implementação de novos recursos tais como:
+ - Implementação do sistema completo para agendar e listar novos serviços.
+ - Implementação do primeiro JavaScript do projeto em templates/gerarServico.html/filtrarPets()
+ - Configuração dos primeiros arquivos para front-end em static/navBar.css
+ - Outras melhorias diversas.

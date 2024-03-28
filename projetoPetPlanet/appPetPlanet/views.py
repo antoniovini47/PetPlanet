@@ -3,21 +3,11 @@ from .models import Cliente
 from .models import Pet
 from .models import Funcionario
 from .models import Produto
+from .models import Servico
 from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 import random
-
-
-# Função temporária, para debug
-def limparBD(request):
-    bd = sqlite3.connect('db.sqlite3')
-    cursor = bd.cursor()
-    cursor.execute(
-        'DELETE from appPetPlanet_cliente WHERE id_cliente>1')
-    bd.commit()
-    bd.close()
-    return render(request, 'home.html')
 
 
 def home(request):
@@ -368,3 +358,85 @@ def editarProdutoNoDB(request, IDProduto):
         'produtos': Produto.objects.all()
     }
     return render(request, 'produto/listarProdutos.html', produtos)
+
+
+# FUNÇÕES SERVIÇOS
+def gerarServico(request):
+    args = {
+        'clientes': Cliente.objects.all(),
+        'funcionarios': Funcionario.objects.all(),
+        'produtos': Produto.objects.filter(categoria='Serviços'),
+        'pets': Pet.objects.all(),
+    }
+    return render(request, 'servico/gerarServico.html', args)
+
+
+def gerarServicoFiltrandoPet(request, IDDono):
+    clienteSelecionado = Cliente.objects.get(id_cliente=IDDono)
+    clientes = Cliente.objects.all()
+
+    # Criar condicional para atribuir "sem pet cadastrado" a pet.nome
+    pets = Pet.objects.filter(id_dono=IDDono)
+    # if pets.count == 0:
+    #     pets = Pet()
+    #     pets.nome = "Sem pet cadastrado"
+
+    args = {
+        # Conserto de bug
+        'clienteSelecionado': clienteSelecionado,
+        'clientes': clientes,
+        'funcionarios': Funcionario.objects.all(),
+        'produtos': Produto.objects.filter(categoria='Serviços'),
+        'pets': pets,
+    }
+    return render(request, 'servico/gerarServico.html', args)
+
+
+def salvarServicoGeradoNoDB(request):
+    servico = Servico()
+    servico.datahora = request.POST.get('datahora')
+    servico.cliente_id = request.POST.get('cliente_id')
+    servico.pet_id = request.POST.get('pet_id')
+    servico.servico_id = request.POST.get('servico_id')
+    servico.funcionario_id = request.POST.get('funcionario_id')
+    servico.observacoes = request.POST.get('observacoes')
+    servico.save()
+
+    args = {
+        'clientes': Cliente.objects.all(),
+        'funcionarios': Funcionario.objects.all(),
+        'produtos': Produto.objects.filter(categoria='Serviços'),
+        'pets': Pet.objects.all(),
+    }
+
+    return render(request, 'servico/gerarServico.html', args)
+
+
+def listarAgenda(request):
+    args = {
+        'clientes': Cliente.objects.all(),
+        'funcionarios': Funcionario.objects.all(),
+        'produtos': Produto.objects.all(),
+        'pets': Pet.objects.all(),
+        'agenda': Servico.objects.all(),
+    }
+    return render(request, 'servico/listarAgenda.html', args)
+
+
+def excluirServicoDoDB(request, IDServico):
+
+    bd = sqlite3.connect('db.sqlite3')
+    cursor = bd.cursor()
+    cursor.execute(
+        'DELETE from appPetPlanet_servico WHERE id_servico='+str(IDServico))
+    bd.commit()
+    bd.close()
+
+    args = {
+        'clientes': Cliente.objects.all(),
+        'funcionarios': Funcionario.objects.all(),
+        'produtos': Produto.objects.all(),
+        'pets': Pet.objects.all(),
+        'agenda': Servico.objects.all(),
+    }
+    return render(request, 'servico/listarAgenda.html', args)

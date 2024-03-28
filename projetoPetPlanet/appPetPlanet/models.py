@@ -40,3 +40,13 @@ class Produto(models.Model):
     estoque = models.IntegerField()
     validade = models.TextField(default='12/12/2099')
     categoria = models.TextField()
+
+
+class Servico(models.Model):
+    id_servico = models.AutoField(primary_key=True)
+    datahora = models.DateTimeField()
+    cliente_id = models.IntegerField()
+    pet_id = models.IntegerField()
+    servico_id = models.TextField(default=3)
+    funcionario_id = models.IntegerField()
+    observacoes = models.TextField()

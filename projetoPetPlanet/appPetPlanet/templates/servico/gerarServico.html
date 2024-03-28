@@ -1,0 +1,60 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<script>
+    function filtrarPets(opc) {
+        var select = document.getElementById("selectCliente");
+        var idcliente = select.value;
+        console.log(idcliente);
+        window.location.href = `{% url 'gerarServicoFiltrandoPet' %}${idcliente}`;
+    }
+</script>
+
+<form action="{% url 'salvarServicoGeradoNoDB' %}" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h1>Gerar Serviço</h1>
+
+        Cliente <select name="cliente_id" id="selectCliente" onchange="filtrarPets(this)">
+            <option type="input" value="{{clienteSelecionado.id_cliente}}">
+                {{clienteSelecionado.id_cliente}} - {{clienteSelecionado.nome}}
+            </option>
+            {% for cliente in clientes %}
+            <option type="input" value="{{cliente.id_cliente}}">
+                {{cliente.id_cliente}} - {{cliente.nome}}
+            </option>
+            {% endfor %}
+
+        </select><br>
+
+        Pet <select name="pet_id">
+            {% for pet in pets %}
+            <option type="input" value="{{pet.id_pet}}">{{pet.id_pet}} - {{pet.nome}}
+            </option>
+            {% endfor %}
+        </select><br>
+
+
+        Serviço <select name="servico_id">
+            {% for servico in produtos %}
+            <option type="input" value="{{servico.id_produto}}">{{servico.id_produto}} -
+                {{servico.nome}}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        Funcionário <select name="funcionario_id">
+            {% for funcionario in funcionarios %}
+            <option type="input" value="{{funcionario.id_funcionario}}">
+                {{funcionario.id_funcionario}} - {{funcionario.nome}}
+            </option>
+            {% endfor %}
+        </select><br>
+
+        Data/Hora <input name="datahora" type="datetime-local"><br>
+
+        Observações <input name="observacoes" type="text"><br>
+
+        <button>Agendar serviço</button>
+    </div>
+</form>
+{% endblock %}

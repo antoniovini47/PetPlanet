@@ -1,0 +1,36 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<div class="container">
+    <h1>Agenda de Serviços</h1>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Data e Hora</th>
+            <th>Cliente</th>
+            <th>Pet</th>
+            <th>Serviço</th>
+            <th>Funcionário</th>
+            <th>Observações</th>
+            <th>Excluir</th>
+        </tr>
+        {% for servico in agenda %}
+        <tr>
+            <td>{{servico.id_servico}}</td>
+            <td>{{servico.datahora}}</td>
+            <td>{{servico.cliente_id}}</td>
+            <td>{{servico.pet_id}}</td>
+            <td>{{servico.servico_id}}</td>
+            <td>{{servico.funcionario_id}}</td>
+            <td>{{servico.observacoes}}</td>
+            <td><a href="{% url 'excluirServicoDoDB' %}{{servico.id_servico}}">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+
+cliente_id = models.IntegerField()
+pet_id = models.IntegerField()
+funcionario_id = models.IntegerField()
+observacoes = models.TextField()
