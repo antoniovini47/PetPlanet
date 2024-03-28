@@ -7,6 +7,7 @@
 
   {% load static %}
   <link href="{% static '/navBar.css' %}" rel="stylesheet">
+  <script src="{% static '/scripts.js' %}"></script>
   <title>PetPlanet</title>
 </head>
 
@@ -25,6 +26,7 @@
       <a href="{% url 'gerarServico' %}">Gerar serv</a> -
       <a href="{% url 'listarAgenda' %}">Agenda de serv</a> -
       <a href="{% url 'novaVenda' %}">Venda</a> -
+      <button onclick="teste('teste 1')">teste 1</button>
       <a>Histórico vendas</a>
     </span>
   </nav>
