@@ -246,8 +246,9 @@ def excluirFuncionarioDoDB(request, IDFuncionario):
         'DELETE from appPetPlanet_funcionario WHERE id_funcionario='+str(IDFuncionario))
     bd.commit()
     bd.close()
+
     funcionarios = {
-        'funcuionarios': Funcionario.objects.all()
+        'funcionarios': Funcionario.objects.all()
     }
     return render(request, 'funcionario/listarFuncionarios.html', funcionarios)
 
@@ -428,14 +429,26 @@ def listarAgenda(request):
 def etiquetarAgenda(agenda):
     agendaOrganizada = agenda
     for servico in agendaOrganizada:
-        servico.cliente_id = Cliente.objects.get(
-            id_cliente=servico.cliente_id).nome
-        servico.funcionario_id = Funcionario.objects.get(
-            id_funcionario=servico.funcionario_id).nome
-        servico.servico_id = Produto.objects.get(
-            id_produto=servico.servico_id).nome
-        servico.pet_id = Pet.objects.get(
-            id_pet=servico.pet_id).nome
+        try:
+            servico.cliente_id = Cliente.objects.get(
+                id_cliente=servico.cliente_id).nome
+        except:
+            servico.cliente_id = "CLIENTE EXCLUÍDO"
+        try:
+            servico.funcionario_id = Funcionario.objects.get(
+                id_funcionario=servico.funcionario_id).nome
+        except:
+            servico.funcionario_id = "FUNCIONÁRIO EXCLUÍDO"
+        try:
+            servico.servico_id = Produto.objects.get(
+                id_produto=servico.servico_id).nome
+        except:
+            servico.servico_id = "SERVIÇO EXCLUÍDO"
+        try:
+            servico.pet_id = Pet.objects.get(
+                id_pet=servico.pet_id).nome
+        except:
+            servico.pet_id = "PET EXCLUÍDO"
     return agendaOrganizada
 
 
@@ -457,3 +470,9 @@ def excluirServicoDoDB(request, IDServico):
         'agendaOrganizada': etiquetarAgenda(Servico.objects.order_by('datahora').all())
     }
     return render(request, 'servico/listarAgenda.html', args)
+
+# Funções vendas
+
+
+def novaVenda(request):
+    return render(request, 'venda/novaVenda.html')
