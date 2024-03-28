@@ -374,13 +374,7 @@ def gerarServico(request):
 def gerarServicoFiltrandoPet(request, IDDono):
     clienteSelecionado = Cliente.objects.get(id_cliente=IDDono)
     clientes = Cliente.objects.all()
-
-    # Criar condicional para atribuir "sem pet cadastrado" a pet.nome
     pets = Pet.objects.filter(id_dono=IDDono)
-    # if pets.count == 0:
-    #     pets = Pet()
-    #     pets.nome = "Sem pet cadastrado"
-
     args = {
         # Conserto de bug
         'clienteSelecionado': clienteSelecionado,

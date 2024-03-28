@@ -1,11 +1,18 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
+
+<script>
+    function atualizaFiltro() {
+
+    }
+</script>
+
 <div class="container">
     <h1>Agenda de Serviços</h1>
-    Filtros <br>
-    Início <input name="filtroInicio" type="datetime-local">
-    Fim <input name="filtroInicio" type="datetime-local">
-    <table class="table table-bordered table-striped">
+    <!--Filtros <br>
+        Início <input name="filtroInicio" type="datetime-local" onchange="atualizaFiltro(this)">
+        Fim <input name="filtroInicio" type="datetime-local" onchange="atualizaFiltro(this)"-->
+    <table>
         <tr>
             <th>ID</th>
             <th>Data e Hora</th>
