@@ -8,26 +8,85 @@
   {% load static %}
   <link href="{% static '/navBar.css' %}" rel="stylesheet">
   <script src="{% static '/scripts.js' %}"></script>
+  <link href="{% static 'https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap' %}" rel="stylesheet"/>
   <title>PetPlanet</title>
 </head>
 
 <body>
   <nav>
-    <span>
-      <a href="{% url 'home' %}">Home</a> -
-      <a href="{% url 'cadastrarCliente' %}">Cad Cliente</a> -
-      <a href="{% url 'listarClientes' %}">List Cliente</a> -
-      <a href="{% url 'cadastrarPet' %}">Cad Pet</a> -
-      <a href="{% url 'listarPets' %}">List Pet</a> -
-      <a href="{% url 'cadastrarFuncionario' %}">Cad Func</a> -
-      <a href="{% url 'listarFuncionarios' %}">List Func</a> -
-      <a href="{% url 'cadastrarProduto' %}">Cad Prod</a> -
-      <a href="{% url 'listarProdutos' %}">List Prod</a> -
-      <a href="{% url 'gerarServico' %}">Gerar serv</a> -
-      <a href="{% url 'listarAgenda' %}">Agenda de serv</a> -
-      <a href="{% url 'novaVenda' %}">Venda</a> -
-      <a>Histórico vendas</a>
-    </span>
+    <div class="wrap">
+      
+        <section>
+          <div class="sidebar">
+            {%load static%} <img class="logo" src = "{% static 'C:\Users\lilin\.vscode\engenhariaDeSoftware\projetoPetPlanet\static\images\logo.png'%}">
+            <button class='sidebar-item' id="funcionario">Funcionário</button>
+              <div class = 'subitems'>
+                <div class = 'subitem' id="cad-func">
+                  <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
+                </div>
+                <div class = 'subitem' id="list-func">
+                  <a href="{% url 'listarFuncionarios' %}">Listar</a>
+                </div>
+              </div>
+            <button class='sidebar-item' id="cliente">Cliente</button>
+              <div class = 'subitems'>
+                <div class = 'subitem' id="cad-func">
+                  <a href="{% url 'cadastrarCliente' %}">Cadastrar</a>
+                </div>
+                <div class = 'subitem' id="list-func">
+                  <a href="{% url 'listarClientes' %}">Listar</a>
+                </div>
+              </div>
+            <button class='sidebar-item' id="pet">Pet</button>
+              <div class = 'subitems'>
+                <div class = 'subitem' id="cad-func">
+                  <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
+                </div>
+                <div class = 'subitem' id="list-func">
+                  <a href="{% url 'listarPets' %}">Listar</a>
+                </div>
+              </div>
+            <button class='sidebar-item' id="produto">Produto</button>
+              <div class = 'subitems'>
+                <div class = 'subitem' id="cad-func">
+                  <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
+                </div>
+                <div class = 'subitem' id="list-func">
+                  <a href="{% url 'listarProdutos' %}">Listar</a>
+                </div>
+              </div>
+            <button class='sidebar-item' id="servicos">Serviços</button>
+              <div class = 'subitems'>
+                <div class = 'subitem' id="cad-func">
+                  <a href="{% url 'gerarServico' %}">Gerar Serviço</a>
+                </div>
+                <div class = 'subitem' id="list-func">
+                  <a href="{% url 'listarAgenda' %}">Agenda</a>
+                </div>
+              </div>
+            <button class='sidebar-item' id="venda">Venda</button>
+          </div>
+      
+      
+        </section>
+          <a href="{% url 'home' %}">Home</a>
+           -
+           -
+           -
+           -
+         
+           -
+           -
+           -
+           -
+          <a href="{% url 'novaVenda' %}">Venda</a> -
+          <a>Histórico vendas</a>
+        <section>
+      </span>
+
+      </section>
+    </div>
+    
   </nav>
   {% block conteudo %}
   {% endblock %}
