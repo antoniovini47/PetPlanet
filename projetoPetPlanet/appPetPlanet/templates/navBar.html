@@ -22,7 +22,7 @@
             <div class="sair">
               <button type='button' id="sair" {%load static%}><img src='../static/images/sair.png'></button>
             </div>
-            <div>
+            <div class="logo-wrap">
               {%load static%} <img class="logo" src = "{% static '../static/images/logo.png'%}">
             </div>
             <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
@@ -86,15 +86,18 @@
           <div id= "home-wrap">
             <a id = "home" href="{% url 'home' %}">Home</a>
           </div>
+          <div class="conteudo">
+            {% block conteudo %}
+            {% endblock %}
+          </div>
         </section>
       </span>
-
+       
       </section>
     </div>
     
   </nav>
-  {% block conteudo %}
-  {% endblock %}
+
 </body>
 
 </html>
