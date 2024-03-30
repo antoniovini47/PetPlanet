@@ -18,6 +18,23 @@ body {
   height: 100vh;
 }
 
+.sidebar-top{
+  display: flex;
+  flex-direction: row;
+}
+
+.sair{
+  margin-left: 250px;
+  background-image: url('./static/images/sair.png');
+  background-position: center;
+}
+
+#sair{
+  margin-top: 25px;
+  background-color: #4E7FCB;
+  border: none;
+}
+
 .sidebar-item{
   background-color: transparent;
   border: none;
@@ -25,8 +42,8 @@ body {
   font-weight: 400px;
   font-size: 18px;
   text-align: left;
-  margin: 16px;
-  margin-top: 25px;
+  margin: 10px;
+  margin-top: 10px;
   margin-left: 90px;
   padding: 10px;
 }
@@ -36,10 +53,12 @@ table, th, td {
 }
 
 .logo{
-  height: 98px;
-  width: 138px;
+  height: 88px;
+  width: 128px;
   margin: 0 50px;
   padding: 40px;
+  padding-top: 0;
+  padding-bottom: 20;
   border-bottom: 0.5px solid #d9e4f0aa;
 }
 
@@ -57,3 +76,26 @@ a:visited {
   text-decoration: none;
   color: #fffe; 
  }
+
+#section2{
+  text-decoration: none;
+  background-color: #c6c6c6 ;
+  width: 100%;
+}
+
+#home-wrap{
+  display: flex;
+  align-items: center;
+  background-color: #fffe;
+  width: 90vw;
+  height: 3em;
+}
+
+#home{
+  text-decoration: none;
+  color: #4e7fcb;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 100px;
+}
+
