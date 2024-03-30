@@ -20,12 +20,12 @@
         <section>
           <div class="sidebar">
             <div class="sair">
-              <button id="sair" {%load static%}><img src='../static/images/sair.png'></button>
+              <button type='button' id="sair" {%load static%}><img src='../static/images/sair.png'></button>
             </div>
             <div>
-              {%load static%} <img class="logo" src = "{% static 'C:\Users\lilin\.vscode\engenhariaDeSoftware\projetoPetPlanet\static\images\logo.png'%}">
+              {%load static%} <img class="logo" src = "{% static '../static/images/logo.png'%}">
             </div>
-            <button class='sidebar-item' id="funcionario">Funcionário</button>
+            <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
               <div class = 'subitems'>
                 <div class = 'subitem' id="cad-func">
                   <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
@@ -34,7 +34,7 @@
                   <a href="{% url 'listarFuncionarios' %}">Listar</a>
                 </div>
               </div>
-            <button class='sidebar-item' id="cliente">Cliente</button>
+            <button type='button' class='sidebar-item' id="cliente">Cliente</button>
               <div class = 'subitems'>
                 <div class = 'subitem' id="cad-cli">
                   <a href="{% url 'cadastrarCliente' %}">Cadastrar</a>
@@ -43,7 +43,7 @@
                   <a href="{% url 'listarClientes' %}">Listar</a>
                 </div>
               </div>
-            <button class='sidebar-item' id="pet">Pet</button>
+            <button type='button' class='sidebar-item' id="pet">Pet</button>
               <div class = 'subitems'>
                 <div class = 'subitem' id="cad-pet">
                   <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
@@ -52,16 +52,16 @@
                   <a href="{% url 'listarPets' %}">Listar</a>
                 </div>
               </div>
-            <button class='sidebar-item' id="produto">Produto</button>
+            <button type='button' class='sidebar-item' id="produto">Produto</button>
               <div class = 'subitems'>
                 <div class = 'subitem' id="cad-prod">
-                  <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
+                  <a href="{% url 'cadastrarProduto' %}">Cadastrar</a>
                 </div>
                 <div class = 'subitem' id="list-prod">
                   <a href="{% url 'listarProdutos' %}">Listar</a>
                 </div>
               </div>
-            <button class='sidebar-item' id="servicos">Serviços</button>
+            <button type='button' class='sidebar-item' id="servicos">Serviços</button>
               <div class = 'subitems'>
                 <div class = 'subitem' id="gerar-serv">
                   <a href="{% url 'gerarServico' %}">Gerar Serviço</a>
@@ -70,7 +70,7 @@
                   <a href="{% url 'listarAgenda' %}">Agenda</a>
                 </div>
               </div>
-            <button class='sidebar-item' id="venda">Venda</button>
+            <button type='button' class='sidebar-item' id="venda">Venda</button>
             <div class = 'subitems'>
               <div class = 'subitem' id="nova-venda">
                 <a href="{% url 'novaVenda' %}">Nova Venda</a>
