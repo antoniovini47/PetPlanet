@@ -19,7 +19,7 @@ body {
   background-image: linear-gradient(to bottom, #4E7FCB, #78A6EC);
   display: flex;
   flex-direction: column;
-  width: 20em;
+  width: 15vw;
   height: 100vh;
 }
 
@@ -40,6 +40,11 @@ body {
   border: none;
 }
 
+.menu-wrap{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
 .button-and-icon{
   display: flex;
   flex-direction: row;
@@ -56,7 +61,7 @@ body {
   text-align: left;
   margin-bottom: 5px;
   margin-top: 10px;
-  padding: 10px;
+  /* padding: 10px;   */
 }
 
 table, th, td {
@@ -75,23 +80,44 @@ table, th, td {
 
 .logo-wrap{
   width: 200px;
+  margin-bottom: 20px;
 }
 
 .subitems{
   display: flex;
   flex-direction: column;
-  margin-left: 120px;
+  margin-left: 75px;
+  margin-bottom: 10px;
   color: #fffe;
   border-left: 1px solid #fffe;
-  padding: 20px;
+  padding: 10px ;
   text-decoration: none;
+}
+
+.subitem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  padding: 3px;
 }
 
 a{
   text-decoration: none;
 }
 
-button:hover{  
+.icons{
+  margin-right: 20px;
+}
+
+.button-and-icon{
+  display: flex;
+  justify-content: left;
+  padding-left: 20px;
+}
+
+.button-and-icon:hover{  
   background-color: #78A6EC;
   color: #fffe;
 }
@@ -113,20 +139,28 @@ a:visited {
   align-items: center;
   background-color: #fffe;
   max-width: 100vmax;
-  width: 98vw;
+  width: 83vw;
   height: 3em;
 }
 
 #home{
   text-decoration: none;
   color: #4e7fcb;
-  font-size: 24px;
+  font-size: 35px;
   font-weight: bold;
-  margin-left: 100px;
+  margin-left: 10px;
 }
 
+/* Essa estilização fica reservada para a parte do home
+
+.conteudo-wrap{
+  background-image: url("../static/images/logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
 .conteudo{
-  margin-left: 1vw;  
+  margin-left: 1vw;
 }
 
 /*tratando as imagens de logo*/
