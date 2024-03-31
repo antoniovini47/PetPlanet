@@ -49,6 +49,9 @@
                 <div class = 'subitem' id="list-cli">
                   <a href="{% url 'listarClientes' %}">Listar</a>
                 </div>
+                <div class = 'subitem' id="pend-cli">
+                  <a href="">Pendências</a>                   <!--Falta o link dela-->
+                </div>
               </div>
             <div class="button-and-icon">
               <img class="icons" id="logo-pet" src="../static/images/logo-pet.png">
@@ -60,6 +63,9 @@
                 </div>
                 <div class = 'subitem' id="list-pet">
                   <a href="{% url 'listarPets' %}">Listar</a>
+                </div>
+                <div class = 'subitem' id="hist-pet">
+                  <a href="">Histórico</a>                   <!--Falta o link dela-->
                 </div>
               </div>
             <div class="button-and-icon">
@@ -85,6 +91,9 @@
                 <div class = 'subitem' id="agenda">
                   <a href="{% url 'listarAgenda' %}">Agenda</a>
                 </div>
+                <div class = 'subitem' id="hist-serv">
+                  <a href="">Histórico</a>                   <!--Falta o link dela-->
+                </div>
               </div>
             <div class="button-and-icon">
               <img class="icons" id="logo-venda" src="../static/images/logo-venda.png">
@@ -95,7 +104,7 @@
                 <a href="{% url 'novaVenda' %}">Nova Venda</a>
               </div>
               <div class = 'subitem' id="hist-venda">
-                <a>Histórico vendas</a>
+                <a>Histórico de vendas</a>              <!--Falta o link-->
               </div>
             </div>
             </div>
@@ -104,11 +113,13 @@
         </section>
         <section id="section2">
           <div id= "home-wrap">
-            <a id = "home" href="{% url 'home' %}">Home</a>
+            <a id = "home" href="{% url 'home' %}">Tela Inicial</a>
           </div>
-          <div class="conteudo">
-              {% block conteudo %}
-              {% endblock %}
+          <div class="conteudo-wrap">
+            <div class="conteudo">
+                {% block conteudo %}
+                {% endblock %}
+            </div>
           </div>
         </section>
     </div>
