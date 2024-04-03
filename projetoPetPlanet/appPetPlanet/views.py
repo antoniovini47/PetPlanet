@@ -475,4 +475,9 @@ def excluirServicoDoDB(request, IDServico):
 
 
 def novaVenda(request):
-    return render(request, 'venda/novaVenda.html')
+    args = {
+        'clientes': Cliente.objects.all(),
+        'produtos': Produto.objects.all(),
+    }
+
+    return render(request, 'venda/novaVenda.html', args)

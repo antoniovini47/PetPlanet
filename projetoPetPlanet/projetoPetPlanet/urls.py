@@ -114,5 +114,6 @@ urlpatterns = [
          name='excluirServicoDoDB'),
 
     # urls vendas
-    path('novaVenda/', views.novaVenda, name='novaVenda')
+    path('novaVenda/', views.novaVenda, name='novaVenda'),
+    path('novaVenda/pdv/', views.novaVenda, name='novaVenda')
 ]

@@ -1,25 +1,32 @@
 {% extends 'navBar.html'%}
 {% block conteudo%}
-
 <div>
-    <h1>PDV - Nova Venda</h1>
-    Produto
-    <select>
-        <option>Produtos aqui...</option>
-    </select><br>
 
-    Quantidade <input type="text" placeholder="Limitar a apenas numeros"></input><br>
+    <h1>PDV - Nova Venda</h1>
 
     Cliente
     <select>
-        <option>Clientes aqui...Tendo como opção default um valor nulo</option>
+        {% for cliente in clientes %}
+        <option>{{cliente.id_cliente}} - {{cliente.nome}}</option>
+        {% endfor %}
+    </select><br><br><br>
+
+    Produto
+    <select name="produtos">
+        {% for produto in produtos %}
+        <option value="{{produto.id_produto}}">{{produto.nome}}
+        </option>
+        {% endfor %}
     </select><br>
 
+    Quantidade <input name="quantidade" type="number"></input><br>
 
+    <button onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">Add Item</button>
 
-    <table name="listaDeItens">
+    <br><br>
+    <table id="tabelaPDV" name="listaDeItens">
         <th>ID</th>
-        <th>Item</th>
+        <th>Nome</th>
         <th>Preço</th>
         <th>Quantidade</th>
         <th>Preço Total</th>
@@ -27,6 +34,7 @@
     </table>
 
 
+    <br><br><br>
     Vendedor
     <select>
         <option>Funcionarios aqui...filtrados por categoria vendedor</option>
