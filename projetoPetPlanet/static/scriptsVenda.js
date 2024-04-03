@@ -1,3 +1,6 @@
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('db.sqlite3');
+
 function addProdutoALista(produto_id){
     var tabela = document.getElementById('tabelaPDV');
     var novaLinha = tabela.insertRow(-1);
@@ -18,8 +21,12 @@ function addProdutoALista(produto_id){
     celulaQuantidade.innerHTML = produto_quantidade;
     celulaPrecoTotal.innerHTML = produto_preco*produto_quantidade;
     celulaExcluir.innerHTML = 'Excluir' //Cadastrar função
-    
-
 
     console.log('addProdutoALista() executado por completo');
+}
+
+function attPrecos(){
+    //Inserir funlção aqui
+
+    console.log('attPrecos() executado por completo')
 }

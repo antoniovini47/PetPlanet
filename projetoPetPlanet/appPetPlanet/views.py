@@ -8,6 +8,7 @@ from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 import random
+import json
 
 
 def home(request):
@@ -478,6 +479,6 @@ def novaVenda(request):
     args = {
         'clientes': Cliente.objects.all(),
         'produtos': Produto.objects.all(),
+        'funcionarios': Funcionario.objects.all(),
     }
-
     return render(request, 'venda/novaVenda.html', args)

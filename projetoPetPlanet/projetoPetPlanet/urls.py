@@ -115,5 +115,4 @@ urlpatterns = [
 
     # urls vendas
     path('novaVenda/', views.novaVenda, name='novaVenda'),
-    path('novaVenda/pdv/', views.novaVenda, name='novaVenda')
 ]
