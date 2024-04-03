@@ -32,3 +32,8 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Configuração dos primeiros arquivos para front-end em static/navBar.css
  - Início da implementação do menu de venda.
  - Outras melhorias diversas.
+
+**03/04/2024** - Implementação de novos recursos tais como:
+ - Implementação de códigos em JavaScript para fazer requisições ao Banco de Dados no menu PDV.
+ - Melhorias visuais e funcionais da tela de vendas.
+ - Outras melhorias diversas.
