@@ -1,6 +1,3 @@
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('db.sqlite3');
-
 function addProdutoALista(produto_id){
     var tabela = document.getElementById('tabelaPDV');
     var novaLinha = tabela.insertRow(-1);
@@ -11,6 +8,9 @@ function addProdutoALista(produto_id){
     var celulaPrecoTotal = novaLinha.insertCell(4);
     var celulaExcluir = novaLinha.insertCell(5);
 
+    
+    //window.location.href = `{% url 'gerarServicoFiltrandoPet' %}${idcliente}`;
+
     var produto_nome = document.querySelector('select[name=produtos]').options[document.querySelector('select[name=produtos]').selectedIndex].text;
     var produto_preco = 2; // puxar do DB
     var produto_quantidade = document.querySelector('input[name=quantidade]').value;
@@ -20,13 +20,23 @@ function addProdutoALista(produto_id){
     celulaPreco.innerHTML = produto_preco;
     celulaQuantidade.innerHTML = produto_quantidade;
     celulaPrecoTotal.innerHTML = produto_preco*produto_quantidade;
-    celulaExcluir.innerHTML = 'Excluir' //Cadastrar função
+    celulaExcluir.innerHTML = 'Excluir'; //Cadastrar função
 
     console.log('addProdutoALista() executado por completo');
+    
+    //window.location.href = `{% url 'gerarServicoFiltrandoPet' %} ${idcliente}`;
 }
 
-function attPrecos(){
-    //Inserir funlção aqui
+function attPrecos(produto_id){    
+    var IDProduto = parseInt(produto_id);
+    console.log(`IDProduto (inteiro agora): ${IDProduto}`);
 
-    console.log('attPrecos() executado por completo')
+    fetch(`getDadosProduto/${IDProduto}`)
+    .then(response => response.json())
+    .then(dados => {
+        var exibeValor = document.getElementById("precoProduto");
+        exibeValor.innerText = dados.preco;
+    });
+
+    console.log('attPrecos() executado por completo');
 }

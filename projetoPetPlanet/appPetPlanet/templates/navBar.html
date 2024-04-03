@@ -9,7 +9,7 @@
   <script src="{% static '/scriptsVenda.js' %}"></script>
   <link href="{% static '/navBar.css' %}" rel="stylesheet">
   <!--Link de estilização da fonte INTER, segundo o protótipo-->
-  <link href="{% static 'https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap' %}" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet" />
   <title>PetPlanet</title>
 </head>
 
@@ -20,9 +20,10 @@
       <section id='section1'>
         <div class="sidebar">
           <div class="sair">
-            <button type='button' id="sair" {%load static%}><img src='../static/images/sair.png'></button>
+            <button type='button' id="sair" {%load static%}><img
+                src="{% static '../static/images/sair.png' %}"></button>
           </div>
-          <div class="logo-wrap">
+          <div class=" logo-wrap">
             {%load static%} <img class="logo" src="{% static '../static/images/logo.png'%}">
           </div>
           <div class="menu-wrap">

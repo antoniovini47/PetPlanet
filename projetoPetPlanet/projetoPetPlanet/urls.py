@@ -115,4 +115,6 @@ urlpatterns = [
 
     # urls vendas
     path('novaVenda/', views.novaVenda, name='novaVenda'),
+    path('novaVenda/getDadosProduto/<int:IDProduto>',
+         views.getDadosProduto, name='getDadosProduto'),
 ]

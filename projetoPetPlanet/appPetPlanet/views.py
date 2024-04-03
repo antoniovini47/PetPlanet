@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .models import Cliente
 from .models import Pet
 from .models import Funcionario
@@ -8,7 +9,6 @@ from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 import random
-import json
 
 
 def home(request):
@@ -482,3 +482,24 @@ def novaVenda(request):
         'funcionarios': Funcionario.objects.all(),
     }
     return render(request, 'venda/novaVenda.html', args)
+
+    id_produto = models.AutoField(primary_key=True)
+    nome = models.TextField()
+    preco = models.FloatField()
+    estoque = models.IntegerField()
+    validade = models.TextField(default='12/12/2099')
+    categoria = models.TextField()
+
+
+def getDadosProduto(request, IDProduto):
+    print(f'Iniciou, IDProduto: {IDProduto}')
+    produto = Produto.objects.get(id_produto=IDProduto)
+    dados = {
+        'id_produto': produto.id_produto,
+        'nome': produto.nome,
+        'preco': produto.preco,
+        'estoque': produto.estoque,
+        'validade': produto.validade,
+        'categoria': produto.categoria,
+    }
+    return JsonResponse(dados)

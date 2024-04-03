@@ -12,15 +12,17 @@
     </select><br><br><br><br>
 
     Produto
-    <select name="produtos" onchange="attPrecos()">
+    <select name="produtos" onchange="attPrecos(document.querySelector('select[name=produtos]').value)">
         {% for produto in produtos %}
         <option value="{{produto.id_produto}}">{{produto.nome}}</option>
         {% endfor %}
     </select><br><br>
 
+    Preço do produto: R$ <a id="precoProduto">0</a><br><br>
+
     Quantidade <input name="quantidade" type="number" value="1"></input><br><br>
-    Preço do produto: R$ <a>2</a> <!--Inserir aqui função que exibe preço individual do produto--> <br><br>
-    Preço Total: R$ <a>2</a> <!--Inserir aqui função que exibe preço total do lançamento--> <br><br>
+
+    Preço Total: R$ <a>0</a> <!--Inserir aqui função que exibe preço total do lançamento--> <br><br>
 
     <button onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">Add Item</button>
 
