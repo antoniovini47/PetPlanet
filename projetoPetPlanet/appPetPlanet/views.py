@@ -17,6 +17,9 @@ import random
 def botaoDebug(request):
     # Cria funções temporárias para testes e correções de bugs
 
+    teste = Venda.objects.get(id_venda=1)
+    print(teste.itens)
+
     print("Botão executado com sucesso")
     return render(request, 'home.html')
 
