@@ -24,6 +24,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
 
+    # url debug
+    path('botaoDebug/', views.botaoDebug, name='botaoDebug'),
+
     # urls cliente
     path('cadastrarCliente/', views.cadastrarCliente,
          name='cadastrarCliente'),
@@ -117,4 +120,7 @@ urlpatterns = [
     path('novaVenda/', views.novaVenda, name='novaVenda'),
     path('novaVenda/getDadosProduto/<int:IDProduto>',
          views.getDadosProduto, name='getDadosProduto'),
+    path('concluirVenda/', views.concluirVenda, name='concluirVenda'),
+    path('concluirVenda/<int:idCliente>/<str:jsonProdutos>/<int:idVendedor>/<str:formaPagamento>/<str:datahora>',
+         views.concluirVenda, name='concluirVenda'),
 ]

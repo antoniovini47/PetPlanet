@@ -9,15 +9,6 @@ function addProdutoALista(produto_id){
     var celulaPrecoTotal = novaLinha.insertCell(4);
     var celulaExcluir = novaLinha.insertCell(5);
 
-    dados = {
-        'id_produto': produto.id_produto,
-        'nome': produto.nome,
-        'preco': produto.preco,
-        'estoque': produto.estoque,
-        'validade': produto.validade,
-        'categoria': produto.categoria,
-    }
-
     fetch(`getDadosProduto/${produto_id}`)
     .then(response => response.json())
     .then(dadosProduto => {
@@ -30,17 +21,13 @@ function addProdutoALista(produto_id){
         celulaPreco.innerHTML = produto_preco;
         celulaQuantidade.innerHTML = produto_quantidade;
         celulaPrecoTotal.innerHTML = produto_preco*produto_quantidade;
-        console.log(tabela.getElementsByTagName('tr').length);
-        celulaExcluir.innerHTML = `<a onclick="excluirProduto(${tabela.getElementsByTagName('tr').length})">Excluir</a>`; //Cadastrar função
+        celulaExcluir.innerHTML = `<a id="linha${tabela.getElementsByTagName('tr').length}" onclick="excluirProduto(${tabela.getElementsByTagName('tr').length})">Excluir</a>`; //Cadastrar função
     });
-
-    console.log('addProdutoALista() executado por completo');
 }
 
 function excluirProduto(idLinha){
-    console.log(`Função excluirProduto iniciada, idLinha: ${idLinha}`);
-    var tabela = document.getElementById('tabelaPDV');
-    tabela.deleteRow(idLinha-1);
+    var linha = document.getElementById(`linha${idLinha}`).parentElement.parentElement;
+    linha.remove();
 }
 
 function attPrecos(produto_id){    
@@ -55,6 +42,4 @@ function attPrecos(produto_id){
         aExibeValor.innerText = dadosProduto.preco;
         aExibeValorTotal.innerText = dadosProduto.preco * quantidadeSelecionada;
     });
-
-    console.log('attPrecos() executado por completo');
 }

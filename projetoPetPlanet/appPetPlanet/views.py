@@ -5,10 +5,20 @@ from .models import Pet
 from .models import Funcionario
 from .models import Produto
 from .models import Servico
+from .models import Venda
 from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 import random
+
+# DEBUG
+
+
+def botaoDebug(request):
+    # Cria funções temporárias para testes e correções de bugs
+
+    print("Botão executado com sucesso")
+    return render(request, 'home.html')
 
 
 def home(request):
@@ -497,3 +507,24 @@ def getDadosProduto(request, IDProduto):
         'categoria': produto.categoria,
     }
     return JsonResponse(dados)
+
+
+def concluirVenda(request, idCliente, jsonProdutos, idVendedor, formaPagamento, datahora):
+
+    venda = Venda()
+
+    venda.cliente_id = idCliente
+    venda.itens = jsonProdutos
+    venda.vendedor_id = idVendedor
+    venda.formaDePagamento = formaPagamento
+    venda.datahora = datahora
+
+    print(f'venda.cliente_id: {venda.cliente_id}')
+    print(f'venda.itens: {venda.itens}')
+    print(f'venda.vendedor_id: {venda.vendedor_id}')
+    print(f'venda.formaDePagamento: {venda.formaDePagamento}')
+    print(f'venda.datahora: {venda.datahora}')
+
+    venda.save()
+
+    return render(request, 'home.html')

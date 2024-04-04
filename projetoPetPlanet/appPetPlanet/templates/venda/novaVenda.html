@@ -1,13 +1,14 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-
 <div>
     <h1>PDV - Nova Venda</h1>
 
+    <!--form action="{% url 'concluirVenda' %}" method="post">
+    {% csrf_token %}-->
     Cliente
-    <select>
+    <select name="cliente">
         {% for cliente in clientes %}
-        <option>{{cliente.id_cliente}} - {{cliente.nome}}</option>
+        <option value="{{cliente.id_cliente}}">{{cliente.id_cliente}} -{{cliente.nome}}</option>
         {% endfor %}
     </select><br><br><br><br>
 
@@ -25,7 +26,7 @@
 
     Preço Total: R$ <a id="precoProdutoTotal">0</a><br><br>
 
-    <button onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">Add Item</button>
+    <a onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">Add Item +</a>
 
     <br><br>
     <table id="tabelaPDV" name="listaDeItens">
@@ -40,21 +41,62 @@
 
     <br><br><br>
     Vendedor
-    <select name="funcionarios">
+    <select name="vendedor">
         {% for funcionario in funcionarios %}
         <option value="{{funcionario.id_funcionario}}">{{funcionario.id_funcionario}} - {{funcionario.nome}}
         </option>
         {% endfor %}
-    </select><br>
+    </select><br><br>
 
     Forma de Pagamento
     <select name="formaDePagamento">
         <option>Dinheiro</option>
         <option>Cartão</option>
         <option>PIX</option>
-    </select><br>
+    </select><br><br>
 
-    <button>Concluir Venda</button>
+    Data/Hora
+    <input name="datahora" type="datetime-local" value="{% now 'Y-m-d\TH:i' %}" disabled></input><br><br>
+
+    <button onclick="finalizarVenda()">Concluir Venda</button>
+    <!--/form-->
 </div>
+
+<script>
+    function finalizarVenda() {
+        var idCliente = document.querySelector('select[name="cliente"]').value;
+
+        var tabela = document.getElementById('tabelaPDV');
+        var linhas = tabela.getElementsByTagName('tr');
+        var dados = [];
+        for (var i = 1; i < linhas.length; i++) {
+            var celulas = linhas[i].getElementsByTagName('td');
+            var id = celulas[0].innerText;
+            var nome = celulas[1].innerText;
+            var preco = celulas[2].innerText;
+            var quantidade = celulas[3].innerText;
+            var precoTotal = celulas[4].innerText;
+
+            var produto = {
+                id: id,
+                nome: nome,
+                preco: preco,
+                quantidade: quantidade,
+                precoTotal: precoTotal
+            };
+
+            dados.push(produto);
+        }
+        var jsonProdutos = JSON.stringify(dados);
+
+        var idVendedor = document.querySelector('select[name="vendedor"]').value;
+
+        var formaDePagamento = document.querySelector('select[name="formaDePagamento"]').value;
+
+        var datahora = document.querySelector('input[name="datahora"]').value;
+
+        window.location.href = `{% url 'concluirVenda' %}${idCliente}/${jsonProdutos}/${idVendedor}/${formaDePagamento}/${datahora}`;
+    }
+</script>
 
 {% endblock %}
