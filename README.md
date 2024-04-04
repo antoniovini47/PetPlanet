@@ -37,3 +37,9 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Implementação de códigos em JavaScript para fazer requisições ao Banco de Dados no menu PDV.
  - Melhorias visuais e funcionais da tela de vendas.
  - Outras melhorias diversas.
+
+**04/04/2024** - Implementação de novos recursos tais como:
+ - Finalizado o módulo de PDV e testado, inserindo assim os primeiros registros de "vendas" no Banco de Dados.
+ - Melhorias visuais e funcionais da tela de vendas.
+ - Implementação do botão "DEBUG" em home.html para testes diversos e correção de bugs.
+ - Outras melhorias diversas.
