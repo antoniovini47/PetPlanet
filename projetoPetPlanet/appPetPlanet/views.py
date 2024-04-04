@@ -483,14 +483,8 @@ def novaVenda(request):
     }
     return render(request, 'venda/novaVenda.html', args)
 
-    id_produto = models.AutoField(primary_key=True)
-    nome = models.TextField()
-    preco = models.FloatField()
-    estoque = models.IntegerField()
-    validade = models.TextField(default='12/12/2099')
-    categoria = models.TextField()
 
-
+# API's para comunicação com o DB
 def getDadosProduto(request, IDProduto):
     print(f'Iniciou, IDProduto: {IDProduto}')
     produto = Produto.objects.get(id_produto=IDProduto)
