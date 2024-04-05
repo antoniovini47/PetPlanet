@@ -22,12 +22,38 @@ function addProdutoALista(produto_id){
         celulaQuantidade.innerHTML = produto_quantidade;
         celulaPrecoTotal.innerHTML = produto_preco*produto_quantidade;
         celulaExcluir.innerHTML = `<a id="linha${tabela.getElementsByTagName('tr').length}" onclick="excluirProduto(${tabela.getElementsByTagName('tr').length})">Excluir</a>`; //Cadastrar função
+
+        var total = 0;
+        var rows = tabela.rows;
+        var aExibeValotTotalVenda = document.getElementById("valorTotalVenda");
+
+        for (var i = 1; i < rows.length; i++) {
+            var cell = rows[i].cells[4];
+            var value = parseFloat(cell.innerText || cell.textContent);
+            total += value;
+        }
+
+        aExibeValotTotalVenda.innerText = total.toFixed(2);
     });
+    
+    
 }
 
 function excluirProduto(idLinha){
     var linha = document.getElementById(`linha${idLinha}`).parentElement.parentElement;
     linha.remove();
+
+    var tabela = document.getElementById('tabelaPDV');
+    var total = 0;
+    var rows = tabela.rows;
+    var aExibeValotTotalVenda = document.getElementById("valorTotalVenda");
+
+    for (var i = 1; i < rows.length; i++) {
+        var cell = rows[i].cells[4];
+        var value = parseFloat(cell.innerText || cell.textContent);
+        total += value;
+    }
+    aExibeValotTotalVenda.innerText = total.toFixed(2);
 }
 
 function attPrecos(produto_id){    

@@ -36,7 +36,9 @@
         <th>Quantidade</th>
         <th>Preço Total</th>
         <th>Excluir</th>
-    </table>
+    </table><br><br>
+
+    Valor total: R$ <a id="valorTotalVenda">0</a>
 
 
     <br><br><br>
@@ -95,7 +97,9 @@
 
         var datahora = document.querySelector('input[name="datahora"]').value;
 
-        window.location.href = `{% url 'concluirVenda' %}${idCliente}/${jsonProdutos}/${idVendedor}/${formaDePagamento}/${datahora}`;
+        var valorTotalVenda = document.getElementById('valorTotalVenda').innerText;
+
+        window.location.href = `{% url 'concluirVenda' %}${idCliente}/${jsonProdutos}/${idVendedor}/${formaDePagamento}/${datahora}/${valorTotalVenda}`;
     }
 </script>
 

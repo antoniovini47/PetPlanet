@@ -121,6 +121,12 @@ urlpatterns = [
     path('novaVenda/getDadosProduto/<int:IDProduto>',
          views.getDadosProduto, name='getDadosProduto'),
     path('concluirVenda/', views.concluirVenda, name='concluirVenda'),
-    path('concluirVenda/<int:idCliente>/<str:jsonProdutos>/<int:idVendedor>/<str:formaPagamento>/<str:datahora>',
+    path('concluirVenda/<int:idCliente>/<str:jsonProdutos>/<int:idVendedor>/<str:formaPagamento>/<str:datahora>/<str:valorTotalVenda>',
          views.concluirVenda, name='concluirVenda'),
+    path('listarVendas/', views.listarVendas, name='listarVendas'),
+    path('detalhesVenda/', views.detalhesVenda, name='detalhesVenda'),
+    path('detalhesVenda/<int:IDVenda>',
+         views.detalhesVenda, name='detalhesVenda'),
+    path('detalhesVenda/getListaProdutos/<int:IDVenda>',
+         views.getListaProdutos, name='getListaProdutos'),
 ]
