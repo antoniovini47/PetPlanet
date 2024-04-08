@@ -43,3 +43,11 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Melhorias visuais e funcionais da tela de vendas.
  - Implementação do botão "DEBUG" em home.html para testes diversos e correção de bugs.
  - Outras melhorias diversas.
+  
+**05/04/2024** - Implementação de novos recursos tais como:
+ - Finalizado o módulo de nova venda (PDV).
+ - Finalizado o módulo de listar vendas.
+ - Finalizado o módulo de detalhar venda.
+ - Finalizado a primeira etapa do backend, sistema funcional.
+ - Melhorias visuais e funcionais da tela de vendas.
+ - Outras melhorias diversas.
