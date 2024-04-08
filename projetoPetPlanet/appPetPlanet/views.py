@@ -17,13 +17,7 @@ import json
 
 def botaoDebug(request):
     # Cria funções temporárias para testes e correções de bugs
-
-    # teste = Venda.objects.get(id_venda=1)
-    # print(teste.itens)
-
-    print(Venda.objects.get(id_venda=1).itens)
-
-    print("Botão executado com sucesso")
+    print("Botão DEBUG executado com sucesso")
     return render(request, 'home.html')
 
 

@@ -30,7 +30,7 @@ body {
 
 .sair{
   margin-left: 250px;
-  /*background-image: url('./static/images/sair.png');*/
+  /*background-image: url('/static/images/sair.png');*/
   background-position: center;
 }
 
