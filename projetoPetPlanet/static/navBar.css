@@ -1,172 +1,202 @@
-nav{
-  max-width: 100vw;
-}
+  nav{
+    max-width: 100vw;
+  }
 
 
-body {
-  background-color: rgb(211, 211, 211);
-  font-family: "Inter", sans-serif;
-}
+  body {
+    background-color: rgb(211, 211, 211);
+    font-family: "Inter", sans-serif;
+  }
 
-.wrap{
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  justify-content: flex-start;
-}
+  .wrap{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+  }
 
-.sidebar{
-  background-image: linear-gradient(to bottom, #4E7FCB, #78A6EC);
-  display: flex;
-  flex-direction: column;
-  width: 15vw;
-  height: 100vh;
-}
+  .sidebar{
+    display: -webkit-flex; /* Safari */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Standard */
+    -webkit-flex-direction: column; /* Safari */
+    -ms-flex-direction: column; /* IE 10 */
+    flex-direction: column; /* Standard */
+    background-image: linear-gradient(to bottom, #4E7FCB, #78A6EC);
+    width: 500px;
+    height: 1200px;
+  }
 
-.sidebar-top{
-  display: flex;
-  flex-direction: row;
-}
+  .sidebar-top{
+    display: flex;
+    flex-direction: row;
+  }
 
-.sair{
-  margin-left: 250px;
-  /*background-image: url('/static/images/sair.png');*/
-  background-position: center;
-}
+  .sair{
+    text-align: right;
+    margin-left: 21em;
+    /*background-image: url('./static/images/sair.png');*/
+    background-position: center;
+  }
 
-#sair{
-  margin-top: 25px;
-  background-color: #4E7FCB;
-  border: none;
-}
+  .sair img{
+    padding-right: 1em;
+    width: 2.5em;
+    height: 4em;
+  }
 
-.menu-wrap{
-  padding-left: 35px;
-  padding-right: 35px;
-}
+  #sair{
+    margin-top: 1.2em;
+    margin-right: 1em;
+    
+    background-color: #4E7FCB;
+    border: none;
+  }
 
-.button-and-icon{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+  .menu-wrap{
+    padding-left: 2.1em;
+    padding-right: 2.1em;
+    font-size: 1.5em;
+    
+  }
 
-.sidebar-item{
-  background-color: transparent;
-  border: none;
-  color: #fffe;
-  font-weight: 400px;
-  font-size: 18px;
-  text-align: left;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  /* padding: 10px;   */
-}
 
-table, th, td {
-  border: 1px solid;
-}
+  .sidebar-item{
+    background-color: transparent;
+    border: none;
+    color: #fffe;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    text-align: left;
+    font-weight: 100px;
+    margin-bottom: 0.5em;
+    margin-top: 0.7em;
+  }
 
-.logo{
-  height: 88px;
-  width: 128px;
-  margin: 0 50px;
-  padding: 40px;
-  padding-top: 0;
-  padding-bottom: 20;
-  border-bottom: 1.5px solid #78A6EC;
-}
+  table, th, td {
+    border: 1px solid;
+  }
 
-.logo-wrap{
-  width: 200px;
-  margin-bottom: 20px;
-}
+  .logo{
+    height: 8em;
+    width: 11em;
+    margin: 0 5em;
+    margin-top: 0;
+    padding: 5em;
+    padding-top: 0;
+    padding-bottom: 2em;
+    border-bottom: 0.1em solid #78A6EC;
+  }
 
-.subitems{
-  display: flex;
-  flex-direction: column;
-  margin-left: 75px;
-  margin-bottom: 10px;
-  color: #fffe;
-  border-left: 1px solid #fffe;
-  padding: 10px ;
-  text-decoration: none;
-}
+  .logo-wrap{
+    width: 1em;
+    margin-bottom: 1.5em;
+  }
 
-.subitem{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3px;
-  padding: 3px;
-}
+  .subitems{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5em;
+    margin-bottom: 10px;
+    color: #fffe;
+    border-left: 1px solid #fffe;
+    padding: 10px ;
+    text-decoration: none;
+    display: none;
+  }
 
-a{
-  text-decoration: none;
-}
-
-.icons{
-  margin-right: 20px;
-}
-
-.button-and-icon{
-  display: flex;
-  justify-content: left;
-  padding-left: 20px;
-}
-
-.button-and-icon:hover{  
-  background-color: #78A6EC;
-  color: #fffe;
-}
-
-a:visited { 
-  text-decoration: none;
-  color: #fffe; 
- }
-
- #section2{
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: flex-start;
   
- }
 
-#home-wrap{
-  align-items: center;
-  background-color: #fffe;
-  max-width: 100vmax;
-  width: 83vw;
-  height: 3em;
-}
+  .items:hover .subitems{
+    display:flex;
+  }
 
-#home{
-  text-decoration: none;
-  color: #4e7fcb;
-  font-size: 35px;
-  font-weight: bold;
-  margin-left: 10px;
-}
 
-/* Essa estilização fica reservada para a parte do home
+  .subitem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    padding: 3px;
+  }
 
-.conteudo-wrap{
-  background-image: url("../static/images/logo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-} */
+  a{
+    text-decoration: none;
+    color: #fffe;
+  }
 
-.conteudo{
-  margin-left: 1vw;
-}
+  .icons{
+    margin-right: 20px;
+  }
 
-/*tratando as imagens de logo*/
-.icons{
-  height: 30px;
-  width: 30px;
-  padding: 0px;
-  
-}
+  .button-and-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 1em;
+  }
+
+  .button-and-icon:hover{  
+    background-color: #78A6EC;
+    color: #fffe;
+  }
+
+  a:visited { 
+    text-decoration: none;
+    color: #fffe; 
+  }
+
+  #section2{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+  }
+
+  #home-wrap{
+    display:flex;
+    flex-direction: row;
+    background-color: #fffe;
+    max-width: 100vmax;
+    width: 83vw;
+    height: 5em;
+  }
+
+  #home{
+    display: flex;
+    text-decoration: none;
+    margin-top: 0.6em;
+    color: #4e7fcb;
+    font-size: 2em;
+    font-weight: bolder;
+    /* margin-left: 0.5em; */
+    max-width: 50vw;
+  }
+
+  /* Essa estilização fica reservada para a parte do home
+
+  .conteudo-wrap{
+    background-image: url("../static/images/logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  } */
+
+  .conteudo{
+    margin-left: 1vw;
+  }
+
+  /*tratando as imagens de logo*/
+  .icons{
+    height: 30px;
+    width: 30px;
+  }
+
+  #home-icon{
+    width: 30px;
+    margin-left: 2em;
+    margin-top: 1.5em;
+  }
