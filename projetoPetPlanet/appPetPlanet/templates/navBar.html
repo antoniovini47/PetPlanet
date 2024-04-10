@@ -20,82 +20,104 @@
       <section id='section1'>
         <div class="sidebar">
           <div class="sair">
-            <button type='button' id="sair" {%load static%}><img src="/static/images/sair.png"></button>
+            <button type='button' id="sair" {%load static%}><img
+                src="../static/images/sair.png"></button>
           </div>
           <div class=" logo-wrap">
-            <img class="logo" src="/static/images/logo.png">
+            <img class="logo" src="../static/images/logo.png">
           </div>
           <div class="menu-wrap">
-            <div class="button-and-icon">
-              <img class="icons" id="logo-func" src="/static/images/logo-funcionario.png">
-              <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="cad-func">
-                <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
+            <div class="items funcionario">
+              <div class="button-and-icon funcionario">
+                <img class="icons" id="logo-func" src="../static/images/logo-funcionario.png">
+                <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
               </div>
-              <div class='subitem' id="list-func">
-                <a href="{% url 'listarFuncionarios' %}">Listar</a>
-              </div>
-            </div>
-            <div class="button-and-icon">
-              <img class="icons" id="logo-cliente" src="/static/images/logo-cliente.png">
-              <button type='button' class='sidebar-item' id="cliente">Cliente</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="cad-cli">
-                <a href="{% url 'cadastrarCliente' %}">Cadastrar</a>
-              </div>
-              <div class='subitem' id="list-cli">
-                <a href="{% url 'listarClientes' %}">Listar</a>
+              <div class='subitems funcionario'>  
+                <div class='subitem' id="cad-func">
+                  <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
+                </div>
+                <div class='subitem' id="list-func">
+                  <a href="{% url 'listarFuncionarios' %}">Listar</a>
+                </div>
               </div>
             </div>
-            <div class="button-and-icon">
-              <img class="icons" id="logo-pet" src="/static/images/logo-pet.png">
-              <button type='button' class='sidebar-item' id="pet">Pet</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="cad-pet">
-                <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
+            <div class="items cliente">
+              <div class="button-and-icon cliente">
+                <img class="icons" id="logo-cliente" src="../static/images/logo-cliente.png">
+                <button type='button' class='sidebar-item' id="cliente">Cliente</button>
               </div>
-              <div class='subitem' id="list-pet">
-                <a href="{% url 'listarPets' %}">Listar</a>
-              </div>
-            </div>
-            <div class="button-and-icon">
-              <img class="icons" id="logo-produto" src="/static/images/logo-produtos.png">
-              <button type='button' class='sidebar-item' id="produto">Produto</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="cad-prod">
-                <a href="{% url 'cadastrarProduto' %}">Cadastrar</a>
-              </div>
-              <div class='subitem' id="list-prod">
-                <a href="{% url 'listarProdutos' %}">Listar</a>
+              <div class='subitems'>
+                <div class='subitem' id="cad-cli">
+                  <a href="{% url 'cadastrarCliente' %}">Cadastrar</a>
+                </div>
+                <div class='subitem' id="list-cli">
+                  <a href="{% url 'listarClientes' %}">Listar</a>
+                </div>
+                <div class='subitem' id="pend-cli">
+                  <a href="">Pendências</a> <!--Falta o link dela-->
+                </div>
               </div>
             </div>
-            <div class="button-and-icon">
-              <img class="icons" id="logo-servicos" src="/static/images/logo-servicos.png">
-              <button type='button' class='sidebar-item' id="servicos">Serviços</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="gerar-serv">
-                <a href="{% url 'gerarServico' %}">Gerar Serviço</a>
+            <div class="items pet">
+              <div class="button-and-icon pet">
+                <img class="icons" id="logo-pet" src="../static/images/logo-pet.png">
+                <button type='button' class='sidebar-item' id="pet">Pet</button>
               </div>
-              <div class='subitem' id="agenda">
-                <a href="{% url 'listarAgenda' %}">Agenda</a>
+              <div class='subitems'>
+                <div class='subitem' id="cad-pet">
+                  <a href="{% url 'cadastrarPet' %}">Cadastrar</a>
+                </div>
+                <div class='subitem' id="list-pet">
+                  <a href="{% url 'listarPets' %}">Listar</a>
+                </div>
+                <div class='subitem' id="hist-pet">
+                  <a href="">Histórico</a> <!--Falta o link dela-->
+                </div>
               </div>
             </div>
-            <div class="button-and-icon">
-              <img class="icons" id="logo-venda" src="/static/images/logo-venda.png">
-              <button type='button' class='sidebar-item' id="venda">Venda</button>
-            </div>
-            <div class='subitems'>
-              <div class='subitem' id="nova-venda">
-                <a href="{% url 'novaVenda' %}">Nova Venda</a>
+            <div class="items produtos">
+              <div class="button-and-icon produtos">
+                <img class="icons" id="logo-produto" src="../static/images/logo-produtos.png">
+                <button type='button' class='sidebar-item' id="produto">Produto</button>
               </div>
-              <div class='subitem' id="hist-venda">
-                <a href="{% url 'listarVendas' %}">Histórico de vendas</a> <!--Falta o link-->
+              <div class='subitems'>
+                <div class='subitem' id="cad-prod">
+                  <a href="{% url 'cadastrarProduto' %}">Cadastrar</a>
+                </div>
+                <div class='subitem' id="list-prod">
+                  <a href="{% url 'listarProdutos' %}">Listar</a>
+                </div>
+              </div>
+            </div>
+            <div class="items servicos">
+              <div class="button-and-icon servicos">
+                <img class="icons" id="logo-servicos" src="../static/images/logo-servicos.png">
+                <button type='button' class='sidebar-item' id="servicos">Serviços</button>
+              </div>
+              <div class='subitems'>
+                <div class='subitem' id="gerar-serv">
+                  <a href="{% url 'gerarServico' %}">Gerar Serviço</a>
+                </div>
+                <div class='subitem' id="agenda">
+                  <a href="{% url 'listarAgenda' %}">Agenda</a>
+                </div>
+                <div class='subitem' id="hist-serv">
+                  <a href="">Histórico</a> <!--Falta o link dela-->
+                </div>
+              </div>
+            </div>
+            <div class="items venda">
+              <div class="button-and-icon venda">
+                <img class="icons" id="logo-venda" src="../static/images/logo-venda.png">
+                <button type='button' class='sidebar-item' id="venda">Venda</button>
+              </div>
+              <div class='subitems'>
+                <div class='subitem' id="nova-venda">
+                  <a href="{% url 'novaVenda' %}">Nova Venda</a>
+                </div>
+                <div class='subitem' id="hist-venda">
+                  <a>Histórico de vendas</a> <!--Falta o link-->
+                </div>
               </div>
             </div>
           </div>
@@ -104,6 +126,7 @@
       </section>
       <section id="section2">
         <div id="home-wrap">
+          <a href="{% url 'home' %}"><img src="../static/images/home-icon.svg" class='icons' id = 'home-icon' alt="home" /></a>
           <a id="home" href="{% url 'home' %}">Tela Inicial</a>
         </div>
         <div class="conteudo-wrap">
