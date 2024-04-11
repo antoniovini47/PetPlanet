@@ -20,8 +20,7 @@
       <section id='section1'>
         <div class="sidebar">
           <div class="sair">
-            <button type='button' id="sair" {%load static%}><img
-                src="../static/images/sair.png"></button>
+            <a type='button' id="sair" href=""><img src="../static/images/sair.png"></a>
           </div>
           <div class=" logo-wrap">
             <img class="logo" src="../static/images/logo.png">
@@ -53,9 +52,9 @@
                 <div class='subitem' id="list-cli">
                   <a href="{% url 'listarClientes' %}">Listar</a>
                 </div>
-                <div class='subitem' id="pend-cli">
-                  <a href="">Pendências</a> <!--Falta o link dela-->
-                </div>
+                <!--<div class='subitem' id="pend-cli">
+                  <a href="">Pendências</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items pet">
@@ -70,9 +69,9 @@
                 <div class='subitem' id="list-pet">
                   <a href="{% url 'listarPets' %}">Listar</a>
                 </div>
-                <div class='subitem' id="hist-pet">
-                  <a href="">Histórico</a> <!--Falta o link dela-->
-                </div>
+                <!--<div class='subitem' id="hist-pet">
+                  <a href="">Histórico</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items produtos">
@@ -101,9 +100,9 @@
                 <div class='subitem' id="agenda">
                   <a href="{% url 'listarAgenda' %}">Agenda</a>
                 </div>
-                <div class='subitem' id="hist-serv">
-                  <a href="">Histórico</a> <!--Falta o link dela-->
-                </div>
+                <!--<div class='subitem' id="hist-serv">
+                  <a href="">Histórico</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items venda">
@@ -116,7 +115,7 @@
                   <a href="{% url 'novaVenda' %}">Nova Venda</a>
                 </div>
                 <div class='subitem' id="hist-venda">
-                  <a>Histórico de vendas</a> <!--Falta o link-->
+                  <a href="{% url 'listarVendas' %}">Histórico de vendas</a>
                 </div>
               </div>
             </div>
