@@ -24,6 +24,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
 
+    # url debug
+    path('botaoDebug/', views.botaoDebug, name='botaoDebug'),
+
     # urls cliente
     path('cadastrarCliente/', views.cadastrarCliente,
          name='cadastrarCliente'),
@@ -87,9 +90,8 @@ urlpatterns = [
          name='salvarNovoProdutoNoDB'),
     path('listarProdutos/', views.listarProdutos,
          name='listarProdutos'),
-    path('infoProduto/', views.infoProduto, name='infoProduto'),
-    path('infoProduto/<int:IDProduto>/',
-         views.infoProduto, name='infoProduto'),
+    path('infoProd/', views.infoProduto, name='infoProduto'),
+    path('infoProd/<int:IDProduto>/', views.infoProduto, name='infoProduto'),
     path('excluirProdutoDoDB/', views.excluirProdutoDoDB,
          name='excluirProdutoDoDB'),
     path('excluirProdutoDoDB/<int:IDProduto>/',
@@ -117,4 +119,13 @@ urlpatterns = [
     path('novaVenda/', views.novaVenda, name='novaVenda'),
     path('novaVenda/getDadosProduto/<int:IDProduto>',
          views.getDadosProduto, name='getDadosProduto'),
+    path('concluirVenda/', views.concluirVenda, name='concluirVenda'),
+    path('concluirVenda/<int:idCliente>/<str:jsonProdutos>/<int:idVendedor>/<str:formaPagamento>/<str:datahora>/<str:valorTotalVenda>',
+         views.concluirVenda, name='concluirVenda'),
+    path('listarVendas/', views.listarVendas, name='listarVendas'),
+    path('detalhesVenda/', views.detalhesVenda, name='detalhesVenda'),
+    path('detalhesVenda/<int:IDVenda>',
+         views.detalhesVenda, name='detalhesVenda'),
+    path('detalhesVenda/getListaProdutos/<int:IDVenda>',
+         views.getListaProdutos, name='getListaProdutos'),
 ]

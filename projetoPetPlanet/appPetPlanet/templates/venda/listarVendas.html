@@ -1,0 +1,50 @@
+{% extends 'navBar.html' %}
+{% block conteudo %}
+<h1>Lista de Vendas</h1>
+<script>
+    function buscaVenda() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("buscaVenda");
+        filtro = entradaBusca.value.toUpperCase();
+        table = document.getElementById("tableVendas");
+        tr = document.getElementById("tableVendas").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+<div>
+    <input type="text" id="buscaVenda" onkeyup="buscaVenda()" placeholder="Buscar Venda...">
+    <table id="tableVendas" class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Data e Hora</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Forma de Pagamento</th>
+            <th>Detalhes</th>
+        </tr>
+        {% for venda in vendas %}
+        <tr>
+            <td>{{ venda.id_venda }}</td>
+            <td>{{ venda.datahora }}</td>
+            <td>{{ venda.cliente_id }}</td>
+            <td>{{ venda.vendedor_id }}</td>
+            <td>{{ venda.formaDePagamento }}</td>
+            <td><a href="{% url 'detalhesVenda' %}{{venda.id_venda}}">Detalhes</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -5,10 +5,20 @@ from .models import Pet
 from .models import Funcionario
 from .models import Produto
 from .models import Servico
+from .models import Venda
 from .gerarPet import gerarDadosPet
 from .gerarPessoa import gerarDadosCliente
 import sqlite3
 import random
+import json
+
+# DEBUG
+
+
+def botaoDebug(request):
+    # Cria funções temporárias para testes e correções de bugs
+    print("Botão DEBUG executado com sucesso")
+    return render(request, 'home.html')
 
 
 def home(request):
@@ -431,23 +441,30 @@ def etiquetarAgenda(agenda):
     agendaOrganizada = agenda
     for servico in agendaOrganizada:
         try:
-            servico.cliente_id = Cliente.objects.get(
-                id_cliente=servico.cliente_id).nome
+            cliente = Cliente.objects.get(
+                id_cliente=servico.cliente_id)
+            servico.cliente_id = str(cliente.id_cliente) + " - " + cliente.nome
         except:
             servico.cliente_id = "CLIENTE EXCLUÍDO"
+
         try:
-            servico.funcionario_id = Funcionario.objects.get(
-                id_funcionario=servico.funcionario_id).nome
+            funcionario = Funcionario.objects.get(
+                id_funcionario=servico.funcionario_id)
+            servico.funcionario_id = str(
+                funcionario.id_funcionario) + " - " + funcionario.nome
         except:
             servico.funcionario_id = "FUNCIONÁRIO EXCLUÍDO"
+
         try:
-            servico.servico_id = Produto.objects.get(
-                id_produto=servico.servico_id).nome
+            serv = Produto.objects.get(id_produto=servico.servico_id)
+            servico.servico_id = str(serv.id_produto) + " - " + serv.nome
         except:
             servico.servico_id = "SERVIÇO EXCLUÍDO"
+
         try:
-            servico.pet_id = Pet.objects.get(
-                id_pet=servico.pet_id).nome
+            pet = Pet.objects.get(
+                id_pet=servico.pet_id)
+            servico.pet_id = str(pet.id_pet) + " - " + pet.nome
         except:
             servico.pet_id = "PET EXCLUÍDO"
     return agendaOrganizada
@@ -483,14 +500,8 @@ def novaVenda(request):
     }
     return render(request, 'venda/novaVenda.html', args)
 
-    id_produto = models.AutoField(primary_key=True)
-    nome = models.TextField()
-    preco = models.FloatField()
-    estoque = models.IntegerField()
-    validade = models.TextField(default='12/12/2099')
-    categoria = models.TextField()
 
-
+# API's para comunicação com o DB
 def getDadosProduto(request, IDProduto):
     print(f'Iniciou, IDProduto: {IDProduto}')
     produto = Produto.objects.get(id_produto=IDProduto)
@@ -503,3 +514,88 @@ def getDadosProduto(request, IDProduto):
         'categoria': produto.categoria,
     }
     return JsonResponse(dados)
+
+
+def concluirVenda(request, idCliente, jsonProdutos, idVendedor, formaPagamento, datahora, valorTotalVenda):
+
+    venda = Venda()
+
+    venda.cliente_id = idCliente
+    venda.itens = jsonProdutos
+    venda.vendedor_id = idVendedor
+    venda.formaDePagamento = formaPagamento
+    venda.datahora = datahora
+    venda.total = float(valorTotalVenda)
+
+    print(f'venda.cliente_id: {venda.cliente_id}')
+    print(f'venda.itens: {venda.itens}')
+    print(f'venda.vendedor_id: {venda.vendedor_id}')
+    print(f'venda.formaDePagamento: {venda.formaDePagamento}')
+    print(f'venda.datahora: {venda.datahora}')
+    print(f'venda.datahora: {venda.total}')
+
+    venda.save()
+
+    # Redirecionar para Detalhes da Venda
+    return render(request, 'home.html')
+
+
+def listarVendas(request):
+    args = {
+        'vendas': etiquetarVendas(Venda.objects.all()),
+    }
+    return render(request, 'venda/listarVendas.html', args)
+
+
+def etiquetarVendas(listaDeVendasCrua):
+    vendaEtiquetada = listaDeVendasCrua
+    for venda in vendaEtiquetada:
+        try:
+            cliente = Cliente.objects.get(id_cliente=venda.cliente_id)
+            venda.cliente_id = str(cliente.id_cliente) + " - " + cliente.nome
+        except:
+            venda.cliente_id = "CLIENTE EXCLUÍDO"
+
+        try:
+            vendedor = Funcionario.objects.get(
+                id_funcionario=venda.vendedor_id)
+            venda.vendedor_id = str(
+                vendedor.id_funcionario) + " - " + vendedor.nome
+        except:
+            venda.cliente_id = "CLIENTE EXCLUÍDO"
+    return vendaEtiquetada
+
+
+def etiquetarVenda(vendaCrua):
+    vendaEtiquetada = vendaCrua
+
+    try:
+        cliente = Cliente.objects.get(id_cliente=vendaEtiquetada.cliente_id)
+        vendaEtiquetada.cliente_id = str(
+            cliente.id_cliente) + " - " + str(cliente.nome)
+        print(vendaEtiquetada.cliente_id)
+    except:
+        vendaEtiquetada.cliente_id = "CLIENTE EXCLUÍDO"
+
+    try:
+        vendedor = Funcionario.objects.get(
+            id_funcionario=vendaEtiquetada.vendedor_id)
+        vendaEtiquetada.vendedor_id = str(
+            vendedor.id_funcionario) + " - " + str(vendedor.nome)
+    except:
+        vendaEtiquetada.vendedor_id = "VENDEDOR EXCLUÍDO"
+
+    return vendaEtiquetada
+
+
+def detalhesVenda(request, IDVenda):
+    args = {
+        'venda': etiquetarVenda(Venda.objects.get(id_venda=IDVenda))
+    }
+    return render(request, 'venda/detalhesVenda.html', args)
+
+
+def getListaProdutos(request, IDVenda):
+    venda = Venda.objects.get(id_venda=IDVenda)
+    itens = json.loads(venda.itens)
+    return JsonResponse(itens, safe=False)

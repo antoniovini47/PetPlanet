@@ -59,3 +59,4 @@ class Venda(models.Model):
     formaDePagamento = models.TextField()
     itens = models.JSONField()
     datahora = models.DateTimeField()
+    total = models.FloatField(default=1)
