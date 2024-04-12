@@ -1,9 +1,32 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-
+<script>
+    function buscaAgenda() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("buscaAgenda");
+        filtro = entradaBusca.value.toUpperCase();
+        table = document.getElementById("tableAgenda");
+        tr = document.getElementById("tableAgenda").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
 <div class="container">
     <h1>Agenda de Serviços</h1>
-    <table>
+    <input type="text" id="buscaAgenda" onkeyup="buscaAgenda()" placeholder="Buscar Serviço...">
+    <table id="tableAgenda">
         <tr>
             <th>ID</th>
             <th>Data e Hora</th>
