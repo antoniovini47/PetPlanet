@@ -1,8 +1,32 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
+<script>
+    function buscaPet() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("buscaPet");
+        filtro = entradaBusca.value.toUpperCase();
+        table = document.getElementById("tablePets");
+        tr = document.getElementById("tablePets").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
 <div class="container">
     <h1>Listagem de Pets</h1>
-    <table class="table table-bordered table-striped">
+    <input type="text" id="buscaPet" onkeyup="buscaPet()" placeholder="Buscar Pet...">
+    <table id="tablePets" class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
             <th>Nome</th>

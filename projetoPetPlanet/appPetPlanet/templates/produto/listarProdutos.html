@@ -1,8 +1,98 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
+<script>
+    /*function buscaProdutoEFiltraCategoria() {
+        var inputProduto, inputCategoria, filtroProduto, filtroCategoria, table, tr, td, i, j, visible;
+        inputProduto = document.getElementById("buscaProduto");
+        inputCategoria = document.getElementById("selectCategoria");
+        filtroProduto = inputProduto.value.toUpperCase();
+        filtroCategoria = inputCategoria.value.toUpperCase();
+        table = document.getElementById("tableProdutos");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            visible = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && (td[j].innerHTML.toUpperCase().indexOf(filtroProduto) > -1 || td[j].innerHTML.toUpperCase().indexOf(filtroCategoria) > -1)) {
+                    visible = true;
+                }
+            }
+            if (visible === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }*/
+
+    function buscaProduto() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("buscaProduto");
+        filtro = entradaBusca.value.toUpperCase();
+        table = document.getElementById("tableProdutos");
+        tr = document.getElementById("tableProdutos").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function filtrarCategoria() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("selectCategoria");
+        filtro = entradaBusca.value.toUpperCase();
+        console.log(filtro);
+        table = document.getElementById("tableProdutos");
+        tr = document.getElementById("tableProdutos").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function limparFiltros() {
+        document.getElementById("buscaProduto").value = "";
+        document.getElementById("selectCategoria").value = "";
+        table = document.getElementById("tableProdutos");
+        tr = document.getElementById("tableProdutos").getElementsByTagName("tr");
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    }
+</script>
 <div class="container">
     <h1>Listagem de Produtos</h1>
-    <table class="table table-bordered table-striped">
+    <input type="text" id="buscaProduto" onkeyup="buscaProduto();" placeholder="Buscar Produto...">
+
+    Categoria <select id="selectCategoria" type="text" onchange="filtrarCategoria()">
+        <option type="input" value="">Filtrar categoria...</option>
+        <option type="input" value="produto">Produto</option>
+        <option type="input" value="serviços">Serviços</option>
+    </select><br><br>
+    <a onclick="limparFiltros()">Limpar filtros</a>
+    <br>
+    <table id="tableProdutos" class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
             <th>Nome</th>
