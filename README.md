@@ -1,5 +1,5 @@
 # PetPlanet
-Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicação web usando Django/Python, para a disciplina de Engenharia de Software II do 5º Período de Ciência da Computação do IFMA-Campus Imperatriz, no ano de 2024 - 1º Período - Professor Varley de Sá
+Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicação web usando Django (Framework Python), para a disciplina de Engenharia de Software II do 5º Período de Ciência da Computação do IFMA-Campus Imperatriz, no ano de 2024 - Professor Varley de Sá
 
 **13/03/2024** - Implementação de novos recursos.
  - Implementação do Código inicial utilizando framework Django/Python.
