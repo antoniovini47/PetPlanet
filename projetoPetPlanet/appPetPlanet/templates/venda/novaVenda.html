@@ -3,8 +3,6 @@
 <div>
     <h1>PDV - Nova Venda</h1>
 
-    <!--form action="{% url 'concluirVenda' %}" method="post">
-    {% csrf_token %}-->
     Cliente
     <select name="cliente">
         {% for cliente in clientes %}
@@ -61,7 +59,6 @@
     <input name="datahora" type="datetime-local" value="{% now 'Y-m-d\TH:i' %}" disabled></input><br><br>
 
     <button onclick="finalizarVenda()">Concluir Venda</button>
-    <!--/form-->
 </div>
 
 <script>

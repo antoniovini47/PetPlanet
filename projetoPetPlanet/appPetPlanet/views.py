@@ -598,5 +598,4 @@ def detalhesVenda(request, IDVenda):
 def getListaProdutos(request, IDVenda):
     venda = Venda.objects.get(id_venda=IDVenda)
     itens = json.loads(venda.itens)
-    print(itens)
     return JsonResponse(itens, safe=False)
