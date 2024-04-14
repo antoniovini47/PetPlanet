@@ -1,8 +1,34 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
+<script>
+    function buscaFuncionario() {
+        var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
+        entradaBusca = document.getElementById("buscaFuncionario");
+        filtro = entradaBusca.value.toUpperCase();
+        table = document.getElementById("tabelaFuncionarios");
+        tr = document.getElementById("tableFuncionarios").getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            visibilidade = false;
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                    visibilidade = true;
+                }
+            }
+            if (visibilidade === true) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
 <div class="container">
     <h1>Listagem de Funcionarios</h1>
-    <table class="table table-bordered table-striped">
+    <input type="text" id="buscaFuncionario" onkeyup="buscaFuncionario()" placeholder="Buscar Funcionário...">
+    <table id="tableFuncionarios" class="table table-bordered table-striped">
         <tr>
             <th>ID</th>
             <th>Nome</th>

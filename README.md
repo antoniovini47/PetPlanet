@@ -51,3 +51,9 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Finalizado a primeira etapa do backend, sistema funcional.
  - Melhorias visuais e funcionais da tela de vendas.
  - Outras melhorias diversas.
+
+**12/04/2024** - Implementação de novos recursos tais como:
+ - Implementação de campos de busca nas listas: Funcionário, Cliente, Pet, Produto, Serviços e Venda.
+ - Implementação do navBar.css que modifica visualmente a barra lateral de navegação.
+ - Melhorias visuais e funcionais da tela de vendas.
+ - Outras melhorias diversas.
