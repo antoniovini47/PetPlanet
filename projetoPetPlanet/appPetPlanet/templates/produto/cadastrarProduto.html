@@ -2,17 +2,34 @@
 {% block conteudo %}
 <form action="{% url 'salvarNovoProdutoNoDB' %}" method="post">
     {% csrf_token %}
-    <div class="container">
-        <h1>Cadastar Produto</h1>
-        Nome <input name="nome" type="text"><br>
-        Preço <input name="preco" type="text"><br>
-        Quantidade em estoque <input name="estoque" type="text"><br>
-        Data de validade <input name="validade" type="text"><br>
-        Categoria <select name="categoria" type="text">
-            <option nome="categoria" type="input">Produto</option>
-            <option nome="categoria" type="input">Serviços</option>
-        </select><br>
-        <button>Cadastrar</button>
+    <div class="conteudo-wrap">
+        <div class="conteudo">
+            <h1>Cadastar Produto</h1>
+            <div class='label-wrap' id="nome">
+                <label class='label' for = "nome">Nome</label> 
+                <input name="nome" type="text" placeholder="nome do produto">
+            </div>
+            <div class='label-wrap' id="preco">
+                <label class='label' for="preco">Preço</label>
+                <input name="preco" type="text" placeholder="preço"><br>
+            </div>
+            <div class='label-wrap' id="quantidade">
+                <label class='label' for="estoque">Quantidade em estoque</label>
+                <input name="estoque" type="text" placeholder="quantidade em estoque"><br>
+            </div>
+            <div class='label-wrap' id="validade">
+                <label class='label' for="validade">Data de validade</label>
+                <input name="validade" type="text" placeholder="validade">
+            </div>
+            <div class='label-wrap' id="categoria">
+                <label class='label' for="categoria">Categoria</label> 
+                <select name="categoria" type="text">
+                    <option nome="categoria" type="input">Produto</option>
+                    <option nome="categoria" type="input">Serviços</option>
+                </select>
+            </div>
+            <button>Cadastrar</button>
+        </div>
     </div>
 </form>
 {% endblock %}
