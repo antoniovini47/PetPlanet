@@ -2,26 +2,94 @@
 {% block conteudo %}
 <form action="{% url 'salvarNovoPetNoDB' %}" method="post">
     {% csrf_token %}
+
     <div class="container">
-        <h1>Cadastar Pet</h1>
-        Nome <input name="nome" type="text" value="{{ nomePet }}"><br>
-        Espécie <input name="especie" type="text" value="{{ especiePet }}"><br>
-        Raça <input name="raca" type="text" value="{{ racaPet }}"><br>
-        Idade <input name="idade" type="text" value="{{ idadePet }}"><br>
-        Sexo <input name="sexo" type="text" value="{{ sexoPet }}"><br>
-        Porte <input name="porte" type="text" value="{{ portePet }}"><br>
-        Alergias <input name="alergias" type="text" value="{{ alergiasPet }}"><br>
-        Dono <select name="dono" type="text" value="{{ donoPet }}">
-            <option>Selecionar dono...</option>
-            {% for cliente in clientes %}
-            <option nome="id_dono" type="input" value="{{cliente.id_cliente}}">{{cliente.id_cliente}} - {{cliente.nome}}
-            </option>
-            {% endfor %}
-        </select>
-        <button>Cadastrar</button>
+
+        {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo">
+            <h1>Cadastro de Pet</h1>
+        </div>
+        
+        {% comment %} 'div' PARA O CONTEÚDO {% endcomment %}
+        <div class="conteudo">
+
+            {% comment %} NOME {% endcomment %}
+            <div class="campo-NomeRaçaIdadeSexoPorte">
+                <div><label for="nome">Nome do Pet</label></div>
+                <div>
+                    <input id="nome" name="nome" type="text" placeholder=" Nome do Pet" value="{{ nomePet }}"><br>
+                </div>
+            </div>
+
+            {% comment %} RAÇA {% endcomment %}
+            <div class="campo-NomeRaçaIdadeSexoPorte">
+                <div><label for="raca">Raça</label></div>
+                <div>
+                    <input id="raca" name="raca" type="text" placeholder=" Raça/Espécie" value="{{ racaPet }}"><br>
+                </div>
+            </div>
+
+            {% comment %} IDADE {% endcomment %}
+            <div class="campo-NomeRaçaIdadeSexoPorte">
+                <div><label for="idade">Idade</label></div>
+                <div>
+                    <input id="idade" name="idade" type="text" placeholder=" Idade ou Ano de Nascimento" value="{{ idadePet }}"><br>
+                </div>
+            </div>
+
+            {% comment %} SEXO {% endcomment %}
+            {% comment %} ANALISAR ESSA FUNÇÃO PARA FERIFICAR SE RETORNARÁ O VALOR CORRETAMENTE {% endcomment %}
+            <div class="campo-NomeRaçaIdadeSexoPorte">
+                <div><label for="sexo">Sexo</label></div>
+                <div>
+                    <select id="sexo" name="sexo">
+                        <option  value="{{ sexoPet }}" selected>Macho</option>
+                        <option  value="{{ sexoPet }}">Fêmea</option>
+                    </select>
+                </div>
+            </div>
+            {% comment %} PORTE {% endcomment %}
+            {% comment %} ANALISAR ESSA FUNÇÃO PARA FERIFICAR SE RETORNARÁ O VALOR CORRETAMENTE {% endcomment %}
+            <div class="campo-NomeRaçaIdadeSexoPorte">
+                <div><label for="porte">Porte</label></div>
+                <div>
+                    <select id="porte" name="porte">
+                        <option  value="{{ portePet }}">Pequeno</option>
+                        <option  value="{{ portePet }}" selected>Médio</option>
+                        <option  value="{{ portePet }}">Grande</option>
+                    </select>
+                </div>
+            </div>
+
+            {% comment %} DONO {% endcomment %}
+            <div class="campo-dono">
+                <div><label for="dono">Dono</label></div>
+                <div>
+                    <select id="dono" name="dono" type="text" value="{{ donoPet }}">
+                        <option>Selecionar dono...</option>
+                        {% for cliente in clientes %}
+                        <option nome="id_dono" type="input" value="{{cliente.id_cliente}}">{{cliente.id_cliente}} - {{cliente.nome}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            {% comment %} CARACTERÍSTICAS {% endcomment %}
+            <div class="campo-caracteristicas">
+                <div><label for="alergias">Alergias (Características)</label></div>
+                <div>
+                    <textarea id="alergias" name="alergias" type="text"
+                              placeholder=" Informações extras sobre o Pet..." value="{{ alergiasPet }}"></textarea>
+                </div>
+            </div>
+
+        </div>
+        <button class="botao-padrao">Cadastrar</button>
     </div>
+
 </form>
 <form action=" {% url 'preencherDadosPet' %}">
-    <button>Gerar Nome do pet</button>
+    <button class="botao-automatico">Gerar Nome do pet</button>
 </form>
 {% endblock %}

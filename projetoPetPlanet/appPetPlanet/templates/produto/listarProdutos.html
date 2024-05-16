@@ -81,38 +81,56 @@
         }
     }
 </script>
-<div class="container">
-    <h1>Listagem de Produtos</h1>
-    <input type="text" id="buscaProduto" onkeyup="buscaProduto();" placeholder="Buscar Produto...">
 
-    Categoria <select id="selectCategoria" type="text" onchange="filtrarCategoria()">
-        <option type="input" value="">Filtrar categoria...</option>
-        <option type="input" value="produto">Produto</option>
-        <option type="input" value="serviços">Serviços</option>
-    </select><br><br>
-    <a onclick="limparFiltros()">Limpar filtros</a>
-    <br>
-    <table id="tableProdutos" class="table table-bordered table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Estoque</th>
-            <th>Validade</th>
-            <th>Categoria</th>
-            <th>Editar</th>
-        </tr>
-        {% for produto in produtos %}
-        <tr>
-            <td>{{produto.id_produto}}</td>
-            <td>{{produto.nome}}</td>
-            <td>{{produto.preco}}</td>
-            <td>{{produto.estoque}}</td>
-            <td>{{produto.validade}}</td>
-            <td>{{produto.categoria}}</td>
-            <td><a href="{% url 'infoProduto' %}{{produto.id_produto}}">Editar</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+<div class="container-lista">
+
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo-tabela">
+        <h1>Lista de Produtos</h1>
+    </div>
+
+    {% comment %} CONTEÚDO {% endcomment %}
+    <div class="conteudo-tabela">
+        
+        {% comment %} BUSCA {% endcomment %}
+        <input type="text" id="buscaProduto" onkeyup="buscaProduto();" placeholder="Buscar Produto...">
+
+        {% comment %} SELECIONAR CATEGORIA {% endcomment %}
+        <div class="categoria-de-produto">
+            <label for="selectCategoria">Categoria</label>
+            <select id="selectCategoria" type="text" onchange="filtrarCategoria()">
+                <option type="input" value="">Filtrar categoria...</option>
+                <option type="input" value="produto">Produto</option>
+                <option type="input" value="serviços">Serviços</option>
+            </select><br><br>
+        </div>
+
+        <a onclick="limparFiltros()">Limpar filtros</a>
+        <br>
+
+        <table id="tableProdutos" class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th>Validade</th>
+                <th>Categoria</th>
+                <th>Editar</th>
+            </tr>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{produto.id_produto}}</td>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.preco}}</td>
+                <td>{{produto.estoque}}</td>
+                <td>{{produto.validade}}</td>
+                <td>{{produto.categoria}}</td>
+                <td><a href="{% url 'infoProduto' %}{{produto.id_produto}}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 </div>
 {% endblock %}

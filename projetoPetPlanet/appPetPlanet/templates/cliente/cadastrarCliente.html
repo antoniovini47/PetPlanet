@@ -2,17 +2,66 @@
 {% block conteudo %}
 <form action="{% url 'salvarNovoClienteNoBD' %}" method="post">
   {% csrf_token %}
+
   <div class="container">
-    <h1>Cadastar Cliente</h1>
-    Nome <input name="nome" type="text" value="{{ nomeCliente }}"><br>
-    E-mail <input name="email" type="email" value="{{ emailCliente }}"><br>
-    CPF <input name="cpf" type="text" value="{{ cpfCliente }}"><br>
-    Telefone <input name="telefone" type="text" value="{{ telefoneCliente }}"><br>
-    Endereço <input name="endereco" type="text" value="{{ enderecoCompletoCliente }}"><br>
-    <button>Cadastrar</button>
+
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo">
+        <h1>Cadastro de Clientes</h1>
+    </div>
+    git 
+    {% comment %} 'div' PARA O CONTEÚDO {% endcomment %}
+    <div class="conteudo">
+
+        {% comment %} NOME {% endcomment %}
+      <div class="campo-NomeEmailEndereço">
+          <div><label for="">Nome</label> </div> 
+          <div>
+            <input id="" name="nome" type="text" placeholder=" Nome Completo" value="{{ nomeCliente }}"><br>
+          </div>
+      </div>
+
+      {% comment %} E-MMAIL {% endcomment %}
+      <div class="campo-NomeEmailEndereço">
+          <div><label for="email">E-mail</label> </div>
+          <div>
+            <input id="email" name="email" type="email" placeholder=" E-mail" value="{{ emailCliente }}"><br>
+          </div>
+      </div>
+
+      {% comment %} ENDEREÇO {% endcomment %}
+      <div class="campo-NomeEmailEndereço">
+          <div><label for="endereco">Endereço</label> </div>
+          <div> 
+            <input id="endereco" name="endereco" type="text" placeholder=" Endereço" value="{{ enderecoCompletoCliente }}"><br>
+          </div>
+      </div>
+
+      {% comment %} CPF {% endcomment %}
+      <div class="campo-CpfTelefone">
+          <div><label for="cpf">CPF</label> </div>
+          <div>
+            <input id="cpf" name="cpf" type="text" placeholder=" CPF" value="{{ cpfCliente }}"><br>
+          </div>
+      </div>
+
+      {% comment %} TELEFONE {% endcomment %}
+      <div class="campo-CpfTelefone">
+          <div><label for="telefone">Telefone</label> </div>
+          <div> 
+            <input id="telefone" name="telefone" type="text" placeholder=" Telefone" value="{{ telefoneCliente }}"><br>
+          </div>
+      </div>
+
+    </div>
+
+    <button class="botao-padrao">Cadastrar</button>
+
   </div>
+
+
 </form>
 <form action=" {% url 'preencherDadosCliente' %}">
-  <button>Preencher automaticamente</button>
+  <button class="botao-automatico">Preencher automaticamente</button>
 </form>
 {% endblock %}

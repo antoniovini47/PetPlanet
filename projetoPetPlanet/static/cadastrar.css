@@ -1,18 +1,399 @@
-.conteudo-wrap{
-    background-color: green;
-    display: flex;
-    align-items: center;
-    width: 60vw;
-    height: 60vh;
-    margin-top: 2vw;
-    margin-left: 3vw;
-}
 
-.conteudo{
+/* BOTÕES */
+.botao-automatico {
+    display: none;
+}
+.botao-padrao {
+    background-color: #4e7fcb;
+    color: #fff;
+    border: #4e7fcb;
+    font-size: 24px;
+    font-weight: 700;
+    box-sizing: border-box;
+    width: 200px;
+    height: 56px;
+    border-radius: 15px;
+    position: fixed;
+    top: 90%;
+    left: 80%;
+}
+.botao-padrao:hover { /* Evento para passar o mouse por cima do botão 'SALVAR' */
+    color: #4e7fcb;
+    background-color: #fff;
+}
+.botao-excluir {
+    background-color: #cb4e4e;
+    color: #fff;
+    border: #cb4e4e;
+    font-size: 24px;
+    font-weight: 700;
+    box-sizing: border-box;
+    width: 200px;
+    height: 56px;
+    border-radius: 15px;
+    position: fixed;
+    top: 90%;
+    left: 65%;
+
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+.botao-excluir:hover { /* Evento para passar o mouse por cima do botão 'EXCLUIR' */
+    background-color: #fff;
+}   .botao-excluir a:hover {
+        color: #cb4e4eff;
+        font-weight: 700;
+    }
+
+/* TELA DE CADASTRO */
+.container {
+    width: 997px;
+    height: 562px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    top: 15%;
+    left: 5%;
+} 
+    .titulo {
+        background-color: #4e7fcb;
+        border-radius: 10px;
+        height: 45px;
+        /* Posicionamento 'relative' para movimentar o "h1" dentro da 'div' do título */
+        position: relative;
+    }   .titulo h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;   
+            /* Posicionamento 'absolute' para movimentar o 'h1' em relação a div do 'titulo' */
+            position: absolute;
+            top: 12%; 
+            left: 35%;
+        }
+
+.conteudo {/* 'div' PARA ALOCAR O CONTEÚDO DA TELA */
+    display: inline-block;
+    margin: 20px 30px;
+    padding: 0;
+}
+    .campo-nome { /* CAMPO NOME */
+        display: inline-block;
+        width: 495px;
+        height: 120px;
+        margin: 0;
+    }   .campo-nome input { /* CAMPO NOME */
+            width: 460px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+
+    .campo-cpf { /* CAMPO CPF */
+        display: inline-block;
+        width: 370px;
+        height: 120px;
+        margin: 0;
+    }   .campo-cpf input { /* CAMPO CPF */
+            width: 350px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+
+    .campo-email { /* CAMPO E-MAIL */
+        display: inline-block;
+        height: 120px;
+        width: 495px;
+        margin: 0;
+    }   .campo-email input { /* CAMPO E-MAIL */
+            width: 460px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+
+    .campo-telefone { /* CAMPO TELEFONE */
+        display: inline-block;
+        height: 120px;
+        width: 370px;
+        margin: 0;
+    }   .campo-telefone input { /* CAMPO TELEFONE */
+        width: 350px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+        }
+    
+    .campo-endereço { /* CAMPO ENDEREÇO */
+        display: inline-block;
+        height: 120px;
+        width: 900px;
+        margin: 0;
+    }   .campo-endereço input { /* CAMPO ENDEREÇO */
+            width: 850px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+
+    .campo-cargo { /* CAMPO CARGO */
+        display: inline-block;
+        height: 120px;
+        width: 495px;
+        margin: 0;
+    }   .campo-cargo input { /* CAMPO CARGO */
+            width: 350px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+    }
+
+    .campo-salario { /* CAMPO SALARIO */
+        display: inline-block;
+        height: 120px;
+        width: 370px;
+        margin: 0;
+    }   .campo-salario input { /* CAMPO SALARIO */
+            width: 350px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;      
+    }
+
+
+
+
+/* TELA DE CADASTRO DE CLIENTES */
+.campo-NomeEmailEndereço { /* CAMPOS NOME + EMAIL + ENDEREÇO */
+    display: inline-block;
+    height: 120px;
+    width: 900px;
+    margin: 0;
+}   .campo-NomeEmailEndereço input {
+        width: 800px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+
+.campo-CpfTelefone { /* CAMPOS CPF + TELEFONE */
+    display: inline-block;
+    height: 120px;
+    width: 450px;
+    margin: 0;
+}   .campo-CpfTelefone input {
+        width: 350px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+
+
+
+    
+/* TELA DE CADASTRO DE PETS */
+.campo-NomeRaçaIdadeSexoPorte { /* CAMPOS NOME + RAÇA + IDADE + PORTE */
+    display: inline-block;
+    width: 300px;
+    height: 120px;
+    margin: 0;
+}   .campo-NomeRaçaIdadeSexoPorte input { /* CAMPOS NOME + RAÇA + IDADE + PORTE */
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+    .campo-NomeRaçaIdadeSexoPorte select {/* CAMPOS SEXO */
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+
+.campo-dono { /* CAMPOS DONO */
+    display: inline-block;
+    width: 300px;
+    height: 120px;
+    margin: 0;
+}   .campo-dono select { /* CAMPOS DONO */
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+
+.campo-caracteristicas { /* CAMPOS ALERGIAS(CARACTERISTICAS) */
+    display: inline-block;
+    width: 900px;
+    height: 200px;
+    margin: 0;
+}   .campo-caracteristicas textarea { /* CAMPOS ALERGIAS(CARACTERISTICAS) */
+        width: 800px;
+        height: 180px;
+        border-radius: 5px;
+        background-color: #4e80cb54;
+        border: 0;
+        margin: 3px 0;
+    }
+
+
+
+    /* CADSTRO DE PRODUTOS */
+
+    /* NESTA TELA DE PRODUTOS FORAM USADAS AS CLASSES :
+
+       - "campo-nome"
+       - "campo-dono"
+       
+       ESSAS CLASSES FORAM CRIADAS PARA TELAS 
+       ANTERIORES E REUTILIZADAS NA TELA DE CADASTRO DE PRODUTOS
+    */
+/* FIM - Cadastro de Produtos */
+
+
+
+/* CADASTRO DE SERVIÇOS */
+.campo-selectServiço { /* DIV PARA OS CAMPOS: CLIENTE + SERVIÇO + PET +FUNCIONÁRIO */
+    display: inline-block;
+    width: 450px;
+    height: 60px;
+    margin: 10px 0;
+    }   .campo-selectServiço select,input { /* EDIÇÃO DOS CAMPOS INPUT E SELECT */
+            width: 300px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+        .campo-selectServiço textarea { /* EDIÇÃO DO CAMPO TEXTAREA */
+            width: 750px;
+            height: 120px;
+            border-radius: 5px;
+            background-color: #4e80cb54;
+            border: 0;
+            margin: 3px 0;
+        }
+
+
+
+
+                    /* ESTILOS EM TABELAS */
+
+
+/* CONTAINER PRINCIPAL */
+.container-lista {
+    background-color: #fff;
+    width: 100%;
+    height: 110%;
+    margin: 10px;
+    border-radius: 15px;
+}
+.conteudo-tabela {
+    margin: 15px; 
+} .conteudo-tabela input { /* Input de busca nas tabelas */
+    margin: 30px 20px;
+}
+
+/* TÍTULO PARA AS TABELAS */
+.titulo-tabela {
+    background-color: #4e7fcb;
+    border-radius: 10px;
+    height: 45px;
+    /* Posicionamento 'relative' para movimentar o "h1" dentro da 'div' do título */
+    position: relative;
+}   .titulo-tabela h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        color: #fff;   
+        /* Posicionamento 'absolute' para movimentar o 'h1' em relação a div do 'titulo' */
+        position: absolute;
+        top: 12%; 
+        left: 40%;
+    }
+
+
+table, th, td {
+    border: 1px solid rgb(124, 124, 124);
+    border-collapse: collapse;
+}
+th, td { /* Cabeçalho e linhas da tabela */
+    padding: 5px 10px;
+}
+th { /* CABEÇALHO */
+    color: #fff;
+    background-color: #4e7fcb;
+    font-size: 600;
+}
+td { /* LINHAS */
+    color: #4e7fcb;
+}   td a {  /* Link "Editar" dentro da tabela */
+        font-weight: 600;
+        color: #4e7fcb;
+    }
+
+/* Altera os elementos pares da tabela, Para alterar os ímpares usar o parâmetro 'even' */
+table tr:nth-child(even) {
+    background-color: #f5f5f5;
 }
 
 
+
+/* ESTILIZAÇÃO PARA AS INFORMAÇÕES DE CADA CLIENTE / PRODUTO / PET / SERVIÇO */
+
+    /* CLASSE PARA A TELA DE EDITAR/EXCLUIR */
+.container-info {
+    width: 997px;
+    min-height: 562px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    top: 15%;
+    left: 5%;  
+} 
+
+    /* CONTEÚDO DA TELA DE EDITAR */
+.conteudo-info {
+    width: 990px;
+    padding: 15px;
+    display: inline-block;
+}   .conteudo-info div {
+        width: 320px;
+        margin: 3px;
+        display: inline-block;
+    }
+
+    /* TABELA DA TELA DE EDITAR */
+.tabela-info {
+    position: relative;
+    left: 20%;
+}   .tabela-info div {
+        margin: 15px 0;
+    }

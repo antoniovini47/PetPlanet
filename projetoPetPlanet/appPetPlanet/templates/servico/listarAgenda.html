@@ -23,32 +23,43 @@
         }
     }
 </script>
-<div class="container">
-    <h1>Agenda de Serviços</h1>
-    <input type="text" id="buscaAgenda" onkeyup="buscaAgenda()" placeholder="Buscar Serviço...">
-    <table id="tableAgenda">
-        <tr>
-            <th>ID</th>
-            <th>Data e Hora</th>
-            <th>Cliente</th>
-            <th>Pet</th>
-            <th>Serviço</th>
-            <th>Funcionário</th>
-            <th>Observações</th>
-            <th>Excluir</th>
-        </tr>
-        {% for servico in agendaOrganizada %}
-        <tr>
-            <td>{{servico.id_servico}}</td>
-            <td>{{servico.datahora}}</td>
-            <td>{{servico.cliente_id}}</td>
-            <td>{{servico.pet_id}}</td>
-            <td>{{servico.servico_id}}</td>
-            <td>{{servico.funcionario_id}}</td>
-            <td>{{servico.observacoes}}</td>
-            <td><a href="{% url 'excluirServicoDoDB' %}{{servico.id_servico}}">Excluir</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+<div class="container-lista">
+
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo-tabela">
+        <h1>Agenda de Serviços</h1>
+    </div>
+
+    {% comment %} CONTEÚDO {% endcomment %}
+    <div class="conteudo-tabela">
+    
+        {% comment %} BUSCA {% endcomment %}
+        <input type="text" id="buscaAgenda" onkeyup="buscaAgenda()" placeholder="Buscar Serviço...">
+        <table id="tableAgenda">
+            <tr>
+                <th>ID</th>
+                <th>Data e Hora</th>
+                <th>Cliente</th>
+                <th>Pet</th>
+                <th>Serviço</th>
+                <th>Funcionário</th>
+                <th>Observações</th>
+                <th>Excluir</th>
+            </tr>
+            {% for servico in agendaOrganizada %}
+            <tr>
+                <td>{{servico.id_servico}}</td>
+                <td>{{servico.datahora}}</td>
+                <td>{{servico.cliente_id}}</td>
+                <td>{{servico.pet_id}}</td>
+                <td>{{servico.servico_id}}</td>
+                <td>{{servico.funcionario_id}}</td>
+                <td>{{servico.observacoes}}</td>
+                <td><a href="{% url 'excluirServicoDoDB' %}{{servico.id_servico}}">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 </div>
 {% endblock %}

@@ -25,34 +25,46 @@
     }
 </script>
 
-<div class="container">
-    <h1>Listagem de Funcionarios</h1>
-    <input type="text" id="buscaFuncionario" onkeyup="buscaFuncionario()" placeholder="Buscar Funcionário...">
-    <table id="tableFuncionarios" class="table table-bordered table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>E-mail</th>
-            <th>Endereço</th>
-            <th>Cargo</th>
-            <th>Salário</th>
-            <th>Editar</th>
-        </tr>
-        {% for funcionario in funcionarios %}
-        <tr>
-            <td>{{funcionario.id_funcionario}}</td>
-            <td>{{funcionario.nome}}</td>
-            <td>{{funcionario.cpf}}</td>
-            <td>{{funcionario.telefone}}</td>
-            <td>{{funcionario.email}}</td>
-            <td>{{funcionario.endereco}}</td>
-            <td>{{funcionario.cargo}}</td>
-            <td>{{funcionario.salario}}</td>
-            <td><a href="{% url 'infoFuncionario' %}{{funcionario.id_funcionario}}">Editar</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+<div class="container-lista">
+
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo-tabela">
+        <h1>Lista de Funcionários</h1>
+    </div>
+
+    {% comment %} CONTEÚDO DA TELA {% endcomment %}
+    <div class="conteudo-tabela">    
+        <input type="text" id="buscaFuncionario" onkeyup="buscaFuncionario()" placeholder="Buscar Funcionário...">
+    
+        <table id="tableFuncionarios" class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Endereço</th>
+                <th>Cargo</th>
+                <th>Salário</th>
+                <th>Editar</th>
+            </tr>
+            {% for funcionario in funcionarios %}
+            <tr>
+                <td>{{funcionario.id_funcionario}}</td>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.cpf}}</td>
+                <td>{{funcionario.telefone}}</td>
+                <td>{{funcionario.email}}</td>
+                <td>{{funcionario.endereco}}</td>
+                <td>{{funcionario.cargo}}</td>
+                <td>{{funcionario.salario}}</td>
+                <td><a href="{% url 'infoFuncionario' %}{{funcionario.id_funcionario}}">Editar</a></td>
+            </tr>
+    
+            {% endfor %}
+    
+        </table>
+    </div>
+
 </div>
 {% endblock %}
