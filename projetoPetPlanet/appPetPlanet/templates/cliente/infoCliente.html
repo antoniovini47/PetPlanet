@@ -2,42 +2,77 @@
 {% block conteudo %}
 <form action="{% url 'editarClienteNoDB' %}{{cliente.id_cliente}}" method="post">
     {% csrf_token %}
-    <div class="container">
-        ID: {{ cliente.id_cliente }}<br>
-        Nome: <input name="nome" type="text" value="{{ cliente.nome }}"><br>
-        CPF: <input name="cpf" type="text" value="{{ cliente.cpf }}"><br>
-        Telefone: <input name="telefone" type="text" value="{{ cliente.telefone }}"><br>
-        E-mail: <input name="email" type="email" value="{{ cliente.email }}"><br>
-        Endereço: <input name="endereco" type="text" value="{{ cliente.endereco }}"><br>
-        Pets:<br>
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Espécie</th>
-                <th>Raça</th>
-                <th>Idade</th>
-                <th>Sexo</th>
-                <th>Porte</th>
-                <th>Alergias</th>
-                <th>Excluir</th>
-            </tr>
-            {% for pet in pets %}
-            <tr>
-                <td>{{pet.id_pet}}</td>
-                <td>{{pet.nome}}</td>
-                <td>{{pet.especie}}</td>
-                <td>{{pet.raca}}</td>
-                <td>{{pet.idade}}</td>
-                <td>{{pet.sexo}}</td>
-                <td>{{pet.porte}}</td>
-                <td>{{pet.alergias}}</td>
-                <td><a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a></td>
-            </tr>
-            {% endfor %}
-        </table>
+
+    <div class="container-info">
+
+            {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo-info">
+            <h1>ID: {{ cliente.id_cliente }}</h1><br>
+        </div>        
+
+        
+        <div class="conteudo-info">
+            <div>
+                <label for="">Nome:</label>
+                <input name="nome" type="text" value="{{ cliente.nome }}"><br>
+            </div>
+            <div>
+                <label for="">CPF:</label>
+                <input name="cpf" type="text" value="{{ cliente.cpf }}"><br>
+            </div>
+            <div>
+                <label for="">Telefone:</label>
+                <input name="telefone" type="text" value="{{ cliente.telefone }}"><br>
+            </div>
+            <div>
+                <label for="">E-mail:</label>
+                <input name="email" type="email" value="{{ cliente.email }}"><br>
+            </div>
+            <div>
+                <label for="">Endereço:</label>
+                <input name="endereco" type="text" value="{{ cliente.endereco }}"><br>
+            </div>
+        </div>
+
+        <div class="tabela-info">
+            <div>                
+                <div><label for="">Pets:<br></label></div>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Espécie</th>
+                        <th>Raça</th>
+                        <th>Idade</th>
+                        <th>Sexo</th>
+                        <th>Porte</th>
+                        <th>Alergias</th>
+                        <th>Excluir</th>
+                    </tr>
+                    {% for pet in pets %}
+                    <tr>
+                        <td>{{pet.id_pet}}</td>
+                        <td>{{pet.nome}}</td>
+                        <td>{{pet.especie}}</td>
+                        <td>{{pet.raca}}</td>
+                        <td>{{pet.idade}}</td>
+                        <td>{{pet.sexo}}</td>
+                        <td>{{pet.porte}}</td>
+                        <td>{{pet.alergias}}</td>
+                        <td><a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            
+        </div>
+
     </div>
-    <button>Salvar</button>
+
+    <button class="botao-padrao">Salvar</button>
+    
 </form>
-<a href="{% url 'excluirClienteDoBD' %}{{ cliente.id_cliente }}">Excluir</a>
+<div class="botao-excluir">
+    <a href="{% url 'excluirClienteDoBD' %}{{ cliente.id_cliente }}">Excluir</a>
+</div>
 {% endblock %}

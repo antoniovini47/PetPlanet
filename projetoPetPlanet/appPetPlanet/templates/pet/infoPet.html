@@ -2,30 +2,72 @@
 {% block conteudo %}
 <form action="{% url 'editarPetNoDB' %}{{pet.id_pet}}" method="post">
     {% csrf_token %}
-    <div class="container">
-        <H1>Dados do Pet</H1>
-        ID: {{ pet.id_pet }}<br>
-        Nome: <input name="nome" type="text" value="{{ pet.nome }}"><br>
-        Espécie: <input name="especie" type="text" value="{{ pet.especie }}"><br>
-        Raça: <input name="raca" type="text" value="{{ pet.raca }}"><br>
-        Idade: <input name="idade" type="text" value="{{ pet.idade }}"><br>
-        Sexo: <input name="sexo" type="text" value="{{ pet.sexo }}"><br>
-        Porte: <input name="porte" type="text" value="{{ pet.porte }}"><br>
-        Alergias: <input name="alergias" type="text" value="{{ pet.alergias }}"><br>
-        Dono <select name="dono" type="text" value="{{ donoPet }}">
+    <div class="container-info">
 
-            <option nome="id_dono" type="input" value="{{ pet.id_dono }}">
-                {{ pet.id_dono }} - {{ dono.nome}}
-            </option>
+        <div class="titulo-info">
+            <H1>Dados do Pet ID: {{ pet.id_pet }}<br></H1>
+        </div>
 
-            {% for cliente in clientes %}
-            <option nome="id_dono" type="input" value="{{cliente.id_cliente}}">{{cliente.id_cliente}} - {{cliente.nome}}
-            </option>
-            {% endfor %}
+        {% comment %} Classe criada para a tela INFO Funcinários {% endcomment %}
+        <div class="conteudo-info-funcionario">            
 
-        </select>
+            <div>
+                <label for="">Nome:</label>
+                <input name="nome" type="text" value="{{ pet.nome }}"><br>
+            </div>
+
+            <div>
+                <label for="">Espécie:</label>
+                <input name="especie" type="text" value="{{ pet.especie }}"><br>
+            </div>
+
+            <div>
+                <label for="">Raça:</label>
+                <input name="raca" type="text" value="{{ pet.raca }}"><br>
+            </div>
+
+            <div>
+                <label for="">Idade:</label>
+                <input name="idade" type="text" value="{{ pet.idade }}"><br>
+            </div>
+
+            <div>
+                <label for="">Sexo:</label>
+                <input name="sexo" type="text" value="{{ pet.sexo }}"><br>
+            </div>
+
+            <div>
+                <label for="">Porte:</label>
+                <input name="porte" type="text" value="{{ pet.porte }}"><br>
+            </div>
+
+            <div>
+                <label for="">Alergias:</label>
+                <input name="alergias" type="text" value="{{ pet.alergias }}"><br>
+            </div>
+
+            <div>
+                <label for="">Dono:</label>
+                <select name="dono" type="text" value="{{ donoPet }}">
+                    <option nome="id_dono" type="input" value="{{ pet.id_dono }}">
+                        {{ pet.id_dono }} - {{ dono.nome}}
+                    </option>
+                    {% for cliente in clientes %}
+                    <option nome="id_dono" type="input" value="{{cliente.id_cliente}}">{{cliente.id_cliente}} - {{cliente.nome}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+        </div>
+
     </div>
-    <button>Salvar</button>
+
+    <button class="botao-padrao">Salvar</button>
 </form>
-<a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a>
+
+<div class="botao-excluir">
+    <a href="{% url 'excluirPetDB' %}{{ pet.id_pet }}">Excluir</a>
+</div>
 {% endblock %}

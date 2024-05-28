@@ -2,18 +2,57 @@
 {% block conteudo %}
 <form action="{% url 'editarFuncionarioNoDB' %}{{funcionario.id_funcionario}}" method="post">
     {% csrf_token %}
-    <div class="container">
-        ID: {{ funcionario.id_funcionario }}<br>
-        Nome: <input name="nome" type="text" value="{{ funcionario.nome }}"><br>
-        CPF: <input name="cpf" type="text" value="{{ funcionario.cpf }}"><br>
-        Telefone: <input name="telefone" type="text" value="{{ funcionario.telefone }}"><br>
-        E-mail: <input name="email" type="email" value="{{ funcionario.email }}"><br>
-        Endereço: <input name="endereco" type="text" value="{{ funcionario.endereco }}"><br>
-        Cargo: <input name="cargo" type="text" value="{{ funcionario.cargo}}"><br>
-        Salário: <input name="salario" type="text" value="{{ funcionario.salario}}"><br>
+
+    <div class="container-info">
+
+        {% comment %} título {% endcomment %}
+        <div class="titulo-info">
+            <h1>ID: {{ funcionario.id_funcionario }}</h1><br>
+        </div>
+
+        <div class="conteudo-info-funcionario">
+            <div>
+                <label for="">Nome:</label>
+                <input name="nome" type="text" value="{{ funcionario.nome }}"><br>
+            </div>
+
+            <div>
+                <label for="">CPF:</label>
+                <input name="cpf" type="text" value="{{ funcionario.cpf }}"><br>
+            </div>
+
+            <div>
+                <label for="">Telefone:</label>
+                <input name="telefone" type="text" value="{{ funcionario.telefone }}"><br>
+            </div>
+
+            <div>
+                <label for="">E-mail: </label>
+                <input name="email" type="email" value="{{ funcionario.email }}"><br>
+            </div>
+
+            <div>
+                <label for="">Endereço:</label>
+                <input name="endereco" type="text" value="{{ funcionario.endereco }}"><br>
+            </div>
+
+            <div>
+                <label for="">Cargo:</label>
+                <input name="cargo" type="text" value="{{ funcionario.cargo}}"><br>
+            </div>
+
+            <div>
+                <label for="">Salário: </label>
+                <input name="salario" type="text" value="{{ funcionario.salario}}"><br>
+            </div>
+        </div>
 
     </div>
-    <button>Salvar</button>
+
+    <button class="botao-padrao">Salvar</button>
 </form>
-<a href="{% url 'excluirFuncionarioDoDB' %}{{ funcionario.id_funcionario }}">Excluir</a>
+
+<div class="botao-excluir">
+    <a href="{% url 'excluirFuncionarioDoDB' %}{{ funcionario.id_funcionario }}">Excluir</a>
+</div>
 {% endblock %}

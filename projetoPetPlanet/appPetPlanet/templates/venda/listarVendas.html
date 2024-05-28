@@ -1,6 +1,6 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-<h1>Lista de Vendas</h1>
+
 <script>
     function buscaVenda() {
         var entradaBusca, filtro, table, tr, td, i, j, visibilidade;
@@ -24,27 +24,42 @@
         }
     }
 </script>
-<div>
-    <input type="text" id="buscaVenda" onkeyup="buscaVenda()" placeholder="Buscar Venda...">
-    <table id="tableVendas" class="table table-bordered table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Data e Hora</th>
-            <th>Cliente</th>
-            <th>Vendedor</th>
-            <th>Forma de Pagamento</th>
-            <th>Detalhes</th>
-        </tr>
-        {% for venda in vendas %}
-        <tr>
-            <td>{{ venda.id_venda }}</td>
-            <td>{{ venda.datahora }}</td>
-            <td>{{ venda.cliente_id }}</td>
-            <td>{{ venda.vendedor_id }}</td>
-            <td>{{ venda.formaDePagamento }}</td>
-            <td><a href="{% url 'detalhesVenda' %}{{venda.id_venda}}">Detalhes</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+
+<div class="container-lista">
+
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo-tabela">
+        <h1>Lista de Vendas</h1>
+    </div>
+
+    {% comment %} CONTEÚDO {% endcomment %}
+    <div class="conteudo-tabela">
+        
+        {% comment %} BUSCA {% endcomment %}
+        <input type="text" id="buscaVenda" onkeyup="buscaVenda()" placeholder="Buscar Venda...">
+        <table id="tableVendas" class="table table-bordered table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Data e Hora</th>
+                <th>Cliente</th>
+                <th>Vendedor</th>
+                <th>Forma de Pagamento</th>
+                <th>Detalhes</th>
+            </tr>
+            {% for venda in vendas %}
+            <tr>
+                <td>{{ venda.id_venda }}</td>
+                <td>{{ venda.datahora }}</td>
+                <td>{{ venda.cliente_id }}</td>
+                <td>{{ venda.vendedor_id }}</td>
+                <td>{{ venda.formaDePagamento }}</td>
+                <td><a href="{% url 'detalhesVenda' %}{{venda.id_venda}}">Detalhes</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
 </div>
+
 {% endblock %}

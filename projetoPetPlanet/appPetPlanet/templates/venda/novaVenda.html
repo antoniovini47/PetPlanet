@@ -1,64 +1,90 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-<div>
-    <h1>PDV - Nova Venda</h1>
 
-    Cliente
-    <select name="cliente">
-        {% for cliente in clientes %}
-        <option value="{{cliente.id_cliente}}">{{cliente.id_cliente}} -{{cliente.nome}}</option>
-        {% endfor %}
-    </select><br><br><br><br>
+<div class="CONTAINER-NOVA-VENDA">
 
-    Produto
-    <select name="produtos" onchange="attPrecos(document.querySelector('select[name=produtos]').value)">
-        {% for produto in produtos %}
-        <option value="{{produto.id_produto}}">{{produto.id_produto}} - {{produto.nome}}</option>
-        {% endfor %}
-    </select><br><br>
+    <div class="bloco-esquerda">
 
-    Preço do produto: R$ <a id="precoProduto">0</a><br><br>
+        {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo">
+            <h1>Nova Venda</h1>
+        </div>        
+        
+        <br>
+        <div class="conteudo-bloco-esquerda">Cliente:        
+            <select id="clientevendedor" name="cliente">
+                {% for cliente in clientes %}
+                <option value="{{cliente.id_cliente}}">{{cliente.id_cliente}} -{{cliente.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+  
+        <div class="conteudo-bloco-esquerda">Produto:        
+            <select name="produtos" onchange="attPrecos(document.querySelector('select[name=produtos]').value)">
+                {% for produto in produtos %}
+                <option value="{{produto.id_produto}}">{{produto.id_produto}} - {{produto.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>     
 
-    Quantidade <input id="inputQuantidade" name="quantidade" type="number" value="1"
-        onchange="attPrecos(document.querySelector('select[name=produtos]').value)"></input><br><br>
+        <div class="conteudo-bloco-esquerda">Preço do produto: R$ <a id="precoProduto">0</a></div>
 
-    Preço Total: R$ <a id="precoProdutoTotal">0</a><br><br>
+        <div class="conteudo-bloco-esquerda">Quantidade:        
+            <input id="inputQuantidade" name="quantidade" type="number" value="1"
+                onchange="attPrecos(document.querySelector('select[name=produtos]').value)"></input><br>
+        </div>        
 
-    <a onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">Add Item +</a>
+        <div class="conteudo-bloco-esquerda">Preço Total: R$ <a id="precoProdutoTotal">0</a><br><br></div>
+        
+        {% comment %} Link para add ITem pra vender {% endcomment %}
+        <div class="conteudo-bloco-esquerda"> Adicionar Produto:
+            <a class="BOTAO-ADD" onclick="addProdutoALista(document.querySelector('select[name=produtos]').value)">
+            <img src="https://static.vecteezy.com/system/resources/previews/011/893/898/non_2x/neumorphic-add-icon-neumorphism-add-button-free-png.png"></a>
+        </div>
 
-    <br><br>
-    <table id="tabelaPDV" name="listaDeItens">
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Quantidade</th>
-        <th>Preço Total</th>
-        <th>Excluir</th>
-    </table><br><br>
+        <div class="conteudo-bloco-esquerda">Vendedor:
+            <select id="clientevendedor"   name="vendedor">
+                {% for funcionario in funcionarios %}
+                <option value="{{funcionario.id_funcionario}}">{{funcionario.id_funcionario}} - {{funcionario.nome}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>        
 
-    Valor total: R$ <a id="valorTotalVenda">0</a>
+        <div class="conteudo-bloco-esquerda">Forma de Pagamento:        
+            <select name="formaDePagamento">
+                <option>Dinheiro</option>
+                <option>Cartão</option>
+                <option>PIX</option>
+            </select>
+        </div>        
 
+        <div class="conteudo-bloco-esquerda">
+            <label for="">Data/Hora:</label>
+                <input name="datahora" type="datetime-local" value="{% now 'Y-m-d\TH:i' %}" disabled></input><br><br>
+        </div>
 
-    <br><br><br>
-    Vendedor
-    <select name="vendedor">
-        {% for funcionario in funcionarios %}
-        <option value="{{funcionario.id_funcionario}}">{{funcionario.id_funcionario}} - {{funcionario.nome}}
-        </option>
-        {% endfor %}
-    </select><br><br>
+    </div>
 
-    Forma de Pagamento
-    <select name="formaDePagamento">
-        <option>Dinheiro</option>
-        <option>Cartão</option>
-        <option>PIX</option>
-    </select><br><br>
+    <div  class="bloco-direita">
 
-    Data/Hora
-    <input name="datahora" type="datetime-local" value="{% now 'Y-m-d\TH:i' %}" disabled></input><br><br>
+        <div class="tabela-prudotos-vendendo">
+            <br>
+            <table id="tabelaPDV" name="listaDeItens">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Preço Total</th>
+                <th>Excluir</th>
+            </table><br>
+        </div>
 
-    <button onclick="finalizarVenda()">Concluir Venda</button>
+        <div class="preco-final">Valor total: R$ <a id="valorTotalVenda">0</a></div>
+    </div>
+
+    <button  class="botao-padrao" onclick="finalizarVenda()">Concluir Venda</button>
+
 </div>
 
 <script>

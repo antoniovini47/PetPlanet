@@ -8,6 +8,7 @@
   {% load static %}
   <script src="{% static '/scriptsVenda.js' %}"></script>
   <link href="{% static '/navBar.css' %}" rel="stylesheet">
+  <link href="{% static '/cadastrar.css'%}" rel="stylesheet">
   <!--Link de estilização da fonte INTER, segundo o protótipo-->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet" />
   <title>PetPlanet</title>
@@ -16,6 +17,7 @@
 <body>
   <nav>
     <div class="wrap">
+
       <section id='section1'>
         <div class="sidebar">
           <div class="sair">
@@ -30,7 +32,7 @@
                 <img class="icons" id="logo-func" src="../static/images/logo-funcionario.png">
                 <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
               </div>
-              <div class='subitems funcionario'>
+              <div class='subitems funcionario'>  
                 <div class='subitem' id="cad-func">
                   <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
                 </div>
@@ -51,6 +53,9 @@
                 <div class='subitem' id="list-cli">
                   <a href="{% url 'listarClientes' %}">Listar</a>
                 </div>
+                <!--<div class='subitem' id="pend-cli">
+                  <a href="">Pendências</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items pet">
@@ -65,6 +70,9 @@
                 <div class='subitem' id="list-pet">
                   <a href="{% url 'listarPets' %}">Listar</a>
                 </div>
+                <!--<div class='subitem' id="hist-pet">
+                  <a href="">Histórico</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items produtos">
@@ -93,6 +101,9 @@
                 <div class='subitem' id="agenda">
                   <a href="{% url 'listarAgenda' %}">Agenda</a>
                 </div>
+                <!--<div class='subitem' id="hist-serv">
+                  <a href="">Histórico</a> Falta o link dela
+                </div>-->
               </div>
             </div>
             <div class="items venda">
@@ -110,18 +121,25 @@
               </div>
             </div>
           </div>
+        </div>
+
       </section>
       <section id="section2">
         <div id="home-wrap">
-          <a href="{% url 'home' %}"><img src="../static/images/home-icon.svg" class='icons' id='home-icon'
-              alt="home" /></a>
+          <a href="{% url 'home' %}"><img src="../static/images/home-icon.svg" class='icons' id = 'home-icon' alt="home" /></a>
           <a id="home" href="{% url 'home' %}">Tela Inicial</a>
+        </div>
+        <div class="conteudo-wrap">
           <div class="conteudo">
             {% block conteudo %}
             {% endblock %}
           </div>
         </div>
-        <div class="conteudo-wrap">
+      </section>
+    </div>
+
+  </nav>
+
 </body>
 
 </html>

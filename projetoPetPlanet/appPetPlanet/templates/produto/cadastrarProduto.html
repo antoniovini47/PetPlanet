@@ -2,17 +2,63 @@
 {% block conteudo %}
 <form action="{% url 'salvarNovoProdutoNoDB' %}" method="post">
     {% csrf_token %}
+
     <div class="container">
-        <h1>Cadastar Produto</h1>
-        Nome <input name="nome" type="text"><br>
-        Preço <input name="preco" type="text"><br>
-        Quantidade em estoque <input name="estoque" type="text"><br>
-        Data de validade <input name="validade" type="text"><br>
-        Categoria <select name="categoria" type="text">
-            <option nome="categoria" type="input">Produto</option>
-            <option nome="categoria" type="input">Serviços</option>
-        </select><br>
-        <button>Cadastrar</button>
+
+        {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo">
+            <h1>Cadastro de Produto</h1>
+        </div>        
+        
+        {% comment %} 'div' PARA O CONTEÚDO DA TELA {% endcomment %}
+        <div class="conteudo">
+            
+            {% comment %} 
+                    FOI USADA A CLASSE "campo-nome", CRIADA PARA
+                    O CADASTRO DE PETS, FUNCIONÁRIOS E CLIENTES
+
+                    Essa classe foi usada nos seguintes campo:
+                    -Nome do Produto
+                    -Preço
+                    -Quantidade em Estoque
+                    -Data de Validade
+            {% endcomment %}
+
+            {% comment %} NOME DO PRODUTO {% endcomment %}
+            <div class="campo-nome">
+                <label for = "nome">Nome do Produto</label> 
+                    <input id="nome" name="nome" type="text" placeholder=" Nome do Produto"><br>
+            </div>
+            {% comment %} PREÇO {% endcomment %}
+            <div class="campo-nome">
+                <div><label for="preco">Preço</label></div>                
+                    <input id="preco" name="preco" type="text" placeholder=" Preço Unitário"><br>                
+            </div>
+            {% comment %} QUANTIDADE {% endcomment %}
+            <div class="campo-nome">
+                <div><label for="quantidade">Quantidade em Estoque</label></div>                
+                    <input id="quantidade" name="estoque" type="text" placeholder=" Quantidade em Estoque"><br>              
+            </div>
+
+            <div class="campo-nome">
+                <div><label for="validade">Data de Validade</label></div>                
+                    <input  id="validade" name="validade" type="text" placeholder="Validade"><br>                
+            </div>
+            {% comment %} campo: CATEGORIA 
+                                AQUI USAMOS A CLASSE "campo-dono" 
+                                CRIADA PARA A TELA DE CADASTRO DE PET                
+            {% endcomment %}
+            <div class="campo-dono"> 
+                <div><label for="categoria">Categoria</label> </div>                
+                    <select  id="categoria" name="categoria" type="text">
+                        <option nome="categoria" type="input">Produto</option><br>
+                        <option nome="categoria" type="input">Serviço</option><br>
+                    </select>                
+            </div>
+
+        </div>
+        
+        <button class="botao-padrao">Cadastrar</button>
     </div>
 </form>
 {% endblock %}
