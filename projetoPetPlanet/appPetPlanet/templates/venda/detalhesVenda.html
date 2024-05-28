@@ -1,31 +1,51 @@
 {% extends 'navBar.html' %}
 {% block conteudo %}
-<h1>Detalhe Venda ID <a id="idVenda">{{venda.id_venda}}</a></h1>
 
-<div>
-    Cliente
-    <input value="{{venda.cliente_id}}" disabled><br><br>
+<div class="container-info">
 
-    Vendedor
-    <input value="{{venda.vendedor_id}}" disabled><br><br>
-
-    Forma de Pagamento
-    <input value="{{venda.formaDePagamento}}" disabled><br><br>
-
-    Data e Hora
-    <input value="{{venda.datahora}}" disabled><br><br>
-
-    Itens
-    <table id="tableItens">
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Quantidade</th>
-        <th>Preço Total</th>
-    </table><br><br>
-
-    Valor Total: R$ <a id="valorTotal">{{venda.total}}</a>
+    {% comment %} TÍTULO {% endcomment %}
+    <div class="titulo-info">
+        <h1>Detalhe Venda ID: <a id="idVenda">{{venda.id_venda}}</a></h1>
+    </div>
+    
+    <div class="conteudo-info-vendas">        
+        
+                <div>
+                    <div>Cliente:</div>
+                    <input value="{{venda.cliente_id}}" disabled><br><br>
+                </div>
+                <div>
+                    <div>Vendedor:</div>
+                    <input value="{{venda.vendedor_id}}" disabled><br><br>
+                </div>
+                <div>
+                    <div>Forma de Pagamento:</div>
+                    <input value="{{venda.formaDePagamento}}" disabled><br><br>
+                </div>
+                <div>
+                    <div>Data e Hora:</div>
+                    <input value="{{venda.datahora}}" disabled><br><br>
+                </div>
+        
+    </div>
+   
+    <div class="tabela-vendas">
+        <div>
+            <div>Itens:</div>
+            <table id="tableItens">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Preço Total</th>
+            </table><br><br>
+        </div>
+    </div>
+          
+    <div class="valor-total-venda">Valor Total: R$ <a id="valorTotal">{{venda.total}}</a></div>
+    
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var idVenda = document.getElementById('idVenda').innerText;

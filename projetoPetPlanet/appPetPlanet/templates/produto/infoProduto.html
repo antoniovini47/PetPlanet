@@ -2,18 +2,50 @@
 {% block conteudo %}
 <form action="{% url 'editarProdutoNoDB' %}{{produto.id_produto}}" method="post">
     {% csrf_token %}
-    <div class="container">
-        Nome <input name="nome" type="text" value="{{ produto.nome }}"><br>
-        Preço <input name="preco" type="text" value="{{ produto.preco }}"><br>
-        Estoque <input name="estoque" type="text" value="{{ produto.estoque }}"><br>
-        Validade <input name="validade" type="text" value="{{ produto.validade }}"><br>
-        Categoria <select name="categoria" type="text">
-            <option nome="categoria" type="input" value="{{ produto.categoria }}">{{ produto.categoria }}</option>
-            <option nome="categoria" type="input">Produto</option>
-            <option nome="categoria" type="input">Serviços</option>
-        </select><br>
+
+    <div class="container-info">
+
+        {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo-info">
+            <h1>Dados Produto: {{ produto.nome }}<br></h1>
+        </div>
+
+        
+        <div class="conteudo-info-funcionario">
+            <div>
+                <label for="">Nome: </label>
+                <input name="nome" type="text" value="{{ produto.nome }}"><br>
+            </div>
+            <div>
+                <label for="">Preço:</label>
+                <input name="preco" type="text" value="{{ produto.preco }}"><br>
+            </div>
+            <div>
+                <label for="">Estoque:</label>
+                <input name="estoque" type="text" value="{{ produto.estoque }}"><br>
+            </div>
+            <div>
+                <label for="">Validade: </label>
+                <input name="validade" type="text" value="{{ produto.validade }}"><br>
+            </div>
+            <div>
+                <label for="">Categoria:</label>
+                <select name="categoria" type="text">
+                    <option nome="categoria" type="input" value="{{ produto.categoria }}">{{ produto.categoria }}</option>
+                    <option nome="categoria" type="input">Produto</option>
+                    <option nome="categoria" type="input">Serviços</option>
+                </select><br>
+            </div>
+        </div>
+
     </div>
-    <button>Salvar</button>
+
+    <button class="botao-padrao">Salvar</button>
+
 </form>
-<a href="{% url 'excluirProdutoDoDB' %}{{ produto.id_produto }}">Excluir</a>
+
+<div class="botao-excluir">
+    <a href="{% url 'excluirProdutoDoDB' %}{{ produto.id_produto }}">Excluir</a>
+</div>
+
 {% endblock %}

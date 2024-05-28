@@ -11,50 +11,84 @@
 
 <form action="{% url 'salvarServicoGeradoNoDB' %}" method="post">
     {% csrf_token %}
+
     <div class="container">
-        <h1>Gerar Serviço</h1>
 
-        Cliente <select name="cliente_id" id="selectCliente" onchange="filtrarPets(this)">
-            <option type="input" value="{{clienteSelecionado.id_cliente}}">
-                {{clienteSelecionado.id_cliente}} - {{clienteSelecionado.nome}}
-            </option>
-            {% for cliente in clientes %}
-            <option type="input" value="{{cliente.id_cliente}}">
-                {{cliente.id_cliente}} - {{cliente.nome}}
-            </option>
-            {% endfor %}
+        {% comment %} TÍTULO {% endcomment %}
+        <div class="titulo">
+            <h1>Gerar Serviço</h1>
+        </div>
+        
+        {% comment %} 'div' PARA O CONTEÚDO {% endcomment %}
+        <div class="conteudo">
 
-        </select><br>
+            {% comment %} CLIENTE {% endcomment %}
+            <div class="campo-selectServiço">
+                <div><label for="selectCliente">Cliente</label></div>
+                    <select id="selectCliente" name="cliente_id" onchange="filtrarPets(this)">
+                        <option type="input" value="{{clienteSelecionado.id_cliente}}">
+                            {{clienteSelecionado.id_cliente}} - {{clienteSelecionado.nome}}
+                        </option>
+                        {% for cliente in clientes %}
+                        <option type="input" value="{{cliente.id_cliente}}">
+                            {{cliente.id_cliente}} - {{cliente.nome}}
+                        </option>
+                        {% endfor %}
+                    </select><br>
+            </div>
 
-        Pet <select name="pet_id">
-            {% for pet in pets %}
-            <option type="input" value="{{pet.id_pet}}">{{pet.id_pet}} - {{pet.nome}}
-            </option>
-            {% endfor %}
-        </select><br>
+            {% comment %} PET {% endcomment %}
+            <div class="campo-selectServiço ">
+                <div><label for="pet_id">Pet</label></div> 
+                    <select id="pet_id" name="pet_id">
+                        {% for pet in pets %}
+                        <option type="input" value="{{pet.id_pet}}">{{pet.id_pet}} - {{pet.nome}}
+                        </option>
+                        {% endfor %}
+                    </select><br>
+            </div>
 
+            {% comment %} SERVIÇO {% endcomment %}
+            <div class="campo-selectServiço">
+                <div><label for="servico_id">Serviço</label></div> 
+                    <select id="servico_id" name="servico_id">
+                        {% for servico in produtos %}
+                        <option type="input" value="{{servico.id_produto}}">{{servico.id_produto}} -
+                            {{servico.nome}}
+                        </option>
+                        {% endfor %}
+                    </select><br>
+            </div>
 
-        Serviço <select name="servico_id">
-            {% for servico in produtos %}
-            <option type="input" value="{{servico.id_produto}}">{{servico.id_produto}} -
-                {{servico.nome}}
-            </option>
-            {% endfor %}
-        </select><br>
+            {% comment %} FUNCIONÁRIO {% endcomment %}
+            <div class="campo-selectServiço">
+                <div><label for="funcionario_id">Funcionário</label></div> 
+                    <select id="funcionario_id" name="funcionario_id">
+                        {% for funcionario in funcionarios %}
+                        <option type="input" value="{{funcionario.id_funcionario}}">
+                            {{funcionario.id_funcionario}} - {{funcionario.nome}}
+                        </option>
+                        {% endfor %}
+                    </select><br>
+            </div>
 
-        Funcionário <select name="funcionario_id">
-            {% for funcionario in funcionarios %}
-            <option type="input" value="{{funcionario.id_funcionario}}">
-                {{funcionario.id_funcionario}} - {{funcionario.nome}}
-            </option>
-            {% endfor %}
-        </select><br>
+            {% comment %} DATA/HORA {% endcomment %}
+            <div class="campo-selectServiço">
+                <div><label for="datahora">Data/Hora</label></div> 
+                    <input id="datahora" name="datahora" type="datetime-local"><br>
+            </div>
 
-        Data/Hora <input name="datahora" type="datetime-local"><br>
+            {% comment %} OBSERVAÇÕES {% endcomment %}
+            <div class="campo-selectServiço" style="display: block; height: 150px">
+                <div><label for="observacoes">Observações</label></div> 
+                    <textarea id="observacoes" name="observacoes" type="text"
+                              placeholder=" Informações sobre o serviço"></textarea><br>
+            </div>
 
-        Observações <input name="observacoes" type="text"><br>
-
-        <button>Agendar serviço</button>
+        </div>
+        
+        {% comment %} BOTÃO PARA AGENDAR SERVIÇO {% endcomment %}
+        <button class="botao-padrao">Agendar Serviço</button>
     </div>
 </form>
 {% endblock %}
