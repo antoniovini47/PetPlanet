@@ -57,3 +57,8 @@ Projeto dedicado a implementação de um gerenciamento de Pet Shop como aplicaç
  - Implementação do navBar.css que modifica visualmente a barra lateral de navegação.
  - Melhorias visuais e funcionais da tela de vendas.
  - Outras melhorias diversas.
+
+**28/05/2024** - Implementação de novos recursos tais como:
+ - Implementação de estilização no front end.
+ - Melhorias visuais e funcionais da tela de vendas.
+ - Outras melhorias diversas.
