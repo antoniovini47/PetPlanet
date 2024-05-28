@@ -20,19 +20,16 @@
 
       <section id='section1'>
         <div class="sidebar">
-          <div class="sair">
-            <a type='button' id="sair" href=""><img src="../static/images/sair.png"></a>
-          </div>
           <div class=" logo-wrap">
-            <img class="logo" src="../static/images/logo.png">
+            <img class="logo" src="{% static '/images/logo.png' %}">
           </div>
           <div class="menu-wrap">
             <div class="items funcionario">
               <div class="button-and-icon funcionario">
-                <img class="icons" id="logo-func" src="../static/images/logo-funcionario.png">
+                <img class="icons" id="logo-func" src="{% static '/images/logo-funcionario.png' %}">
                 <button type='button' class='sidebar-item' id="funcionario">Funcionário</button>
               </div>
-              <div class='subitems funcionario'>  
+              <div class='subitems funcionario'>
                 <div class='subitem' id="cad-func">
                   <a href="{% url 'cadastrarFuncionario' %}">Cadastrar</a>
                 </div>
@@ -43,7 +40,7 @@
             </div>
             <div class="items cliente">
               <div class="button-and-icon cliente">
-                <img class="icons" id="logo-cliente" src="../static/images/logo-cliente.png">
+                <img class="icons" id="logo-cliente" src="{% static '/images/logo-cliente.png' %}">
                 <button type='button' class='sidebar-item' id="cliente">Cliente</button>
               </div>
               <div class='subitems'>
@@ -53,14 +50,11 @@
                 <div class='subitem' id="list-cli">
                   <a href="{% url 'listarClientes' %}">Listar</a>
                 </div>
-                <!--<div class='subitem' id="pend-cli">
-                  <a href="">Pendências</a> Falta o link dela
-                </div>-->
               </div>
             </div>
             <div class="items pet">
               <div class="button-and-icon pet">
-                <img class="icons" id="logo-pet" src="../static/images/logo-pet.png">
+                <img class="icons" id="logo-pet" src="{% static '/images/logo-pet.png' %}">
                 <button type='button' class='sidebar-item' id="pet">Pet</button>
               </div>
               <div class='subitems'>
@@ -70,14 +64,11 @@
                 <div class='subitem' id="list-pet">
                   <a href="{% url 'listarPets' %}">Listar</a>
                 </div>
-                <!--<div class='subitem' id="hist-pet">
-                  <a href="">Histórico</a> Falta o link dela
-                </div>-->
               </div>
             </div>
             <div class="items produtos">
               <div class="button-and-icon produtos">
-                <img class="icons" id="logo-produto" src="../static/images/logo-produtos.png">
+                <img class="icons" id="logo-produto" src="{% static '/images/logo-produtos.png' %}">
                 <button type='button' class='sidebar-item' id="produto">Produto</button>
               </div>
               <div class='subitems'>
@@ -91,7 +82,7 @@
             </div>
             <div class="items servicos">
               <div class="button-and-icon servicos">
-                <img class="icons" id="logo-servicos" src="../static/images/logo-servicos.png">
+                <img class="icons" id="logo-servicos" src="{% static '/images/logo-servicos.png' %}">
                 <button type='button' class='sidebar-item' id="servicos">Serviços</button>
               </div>
               <div class='subitems'>
@@ -101,14 +92,11 @@
                 <div class='subitem' id="agenda">
                   <a href="{% url 'listarAgenda' %}">Agenda</a>
                 </div>
-                <!--<div class='subitem' id="hist-serv">
-                  <a href="">Histórico</a> Falta o link dela
-                </div>-->
               </div>
             </div>
             <div class="items venda">
               <div class="button-and-icon venda">
-                <img class="icons" id="logo-venda" src="../static/images/logo-venda.png">
+                <img class="icons" id="logo-venda" src="{% static '/images/logo-venda.png' %}">
                 <button type='button' class='sidebar-item' id="venda">Venda</button>
               </div>
               <div class='subitems'>
@@ -126,7 +114,8 @@
       </section>
       <section id="section2">
         <div id="home-wrap">
-          <a href="{% url 'home' %}"><img src="../static/images/home-icon.svg" class='icons' id = 'home-icon' alt="home" /></a>
+          <a href="{% url 'home' %}"><img src="{% static '/images/home-icon.svg' %}" class='icons' id='home-icon'
+              alt="home" /></a>
           <a id="home" href="{% url 'home' %}">Tela Inicial</a>
         </div>
         <div class="conteudo-wrap">

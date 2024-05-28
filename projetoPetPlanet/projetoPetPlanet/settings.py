@@ -24,6 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-++*t+dm&xz5=n@4nx&1erl6@2kn!8rqntl29%o5(rqx3-!85h^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Determine if we are in development mode or not
+# You can set an environment variable to indicate the mode, e.g. "DEV_MODE=true"
+dev_mode = os.environ.get('DEV_MODE', '').lower() == 'true'
+
+# Set DEBUG based on the mode
+DEBUG = dev_mode
+
+# If not in development mode, update ALLOWED_HOSTS
+if not dev_mode:
+    ALLOWED_HOSTS = ['your-production-domain.com']
 DEBUG = True
 
 ALLOWED_HOSTS = []
